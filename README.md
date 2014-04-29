@@ -9,6 +9,28 @@ Want to report a bug, request a feature, or help us build or translate? Check ou
 Getting Started
 ===============
 
+Features
+========
+### Available
+* Server framework using Sails
+* Third party Authentication using Passport
+* Local authentication using Passport
+* Less UI framework using Flatify
+
+### TODO
+* Sails Models with Mongodb store
+* Sails Session store with Mongodb
+* Grunt Heroku deployment
+* Frontend framework using Angular JS
+* Basic Dashboard interface
+* Toggle Side Menu
+* Message alert using websockets
+* Inbox for Messages
+* Settings
+* Notification system using toster
+* Activation Mail using node mailer
+* Messenger or Chat using websockets
+
 Versioning
 ==========
 
@@ -28,3 +50,34 @@ Constructed with the following guidelines:
 Copyrights & License
 =====================
 Released under the [MIT license](https://github.com/phaneendra/urbanrunners/blob/master/LICENSE).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Scratchpad
+==========
+
+Feed
+ - Will have option to list your chatter data.
+ - option to post data.
+ - Your Buddies chatter data.
+ - Topics chatter data

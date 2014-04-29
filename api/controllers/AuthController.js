@@ -6,6 +6,8 @@
  *
  *                 Actions contain code telling Sails how to respond to a certain type of request.
  *                 (i.e. do stuff, then send some JSON, show an HTML page, or redirect to another URL)
+ *                 It currently includes the minimum amount of functionality for
+ *                 the basics of Passport.js to work.
  *
  *                 You can configure the blueprint URLs which trigger these actions (`config/controllers.js`)
  *                 and/or override them with custom routes (`config/routes.js`)
@@ -14,93 +16,141 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
-var passport = require('passport');
 var _ = require('underscore');
 
-module.exports = {
+var AuthController = {
+    /**
+   * Render the login page
+   *
+   * The login form itself is just a simple HTML form:
+   *
+      <form role="form" action="/auth/local" method="post">
+        <input type="text" name="identifier" placeholder="Username or Email">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit">Sign in</button>
+      </form>
+   *
+   * You could optionally add CSRF-protection as outlined in the documentation:
+   * http://sailsjs.org/#!documentation/config.csrf
+   *
+   * A simple example of automatically listing all available providers in a
+   * Handlebars template would look like this:
+   *
+      {{#each providers}}
+        <a href="/auth/{{slug}}" role="button">{{name}}</a>
+      {{/each}}
+   *
+   * @param {Object} req
+   * @param {Object} res
+   */
+    login: function(req, res) {
+        var strategies = sails.config.passport;
+        var providers = {};
 
-    'login': function(req, res) {
+        // Get a list of available providers for use in your templates.
+        Object.keys(strategies).forEach(function(key) {
+            if (key === 'local') return;
+
+            providers[key] = {
+                name: strategies[key].name,
+                slug: key
+            };
+        });
+
         res.locals.flash = _.clone(req.session.flash);
-        console.log(res.locals.flash);
-        res.view();
+
+        // Render the `auth/login.ejs` view
+        res.view({
+            providers: providers
+        });
         req.session.flash = {};
     },
-    'signup': function(req, res) {
-        res.view();
-    },
-    'authenticate': function(req, res) {
-        console.log('authenticating user');
 
-        passport.authenticate('local', function(err, user, info) {
-            if ((err) || (!user)) {
-                console.log(info);
-                req.session.flash = {
-                    'err': 'Login Failure'
-                };
-                res.redirect('/login');
-                return;
-            }
-
-            req.logIn(user, function(err) {
-                console.log(user);
-                if (err) {
-                    console.log(err);
-                    req.session.flash = {
-                        'err': 'Login Failure'
-                    };
-                    res.redirect('/login');
-                    return;
-                }
-
-                res.redirect('/dashboard');
-                req.session.flash = {};
-                return;
-            });
-        })(req, res);
-    },
-    'runkeeper': function(req, res) {
-        console.log('authenticating user with runkeeper');
-        passport.authenticate('runkeeper')(req, res);
-    },
-    'runkeeperCallback': function(req, res) {
-        console.log('authentication done redirecting appropriately');
-        passport.authenticate('runkeeper', function(err, user, info) {
-            if ((err) || (!user)) {
-                console.log("Error authenticating : " + info);
-                req.session.flash = {
-                    'err': 'Login Failure'
-                };
-                res.redirect('/login');
-                return;
-            }
-
-            req.logIn(user, function(err) {
-                console.log("loging in user : " + user);
-                if (err) {
-                    console.log("Error while login :" + err);
-                    req.session.flash = {
-                        'err': 'Login Failure'
-                    };
-                    res.redirect('/login');
-                    return;
-                }
-
-                res.redirect('/dashboard');
-                req.session.flash = {};
-                return;
-            });
-        })(req, res);
-    },
-    'logout': function(req, res) {
+    /**
+     * Log out a user and return them to the homepage
+     *
+     * Passport exposes a logout() function on req (also aliased as logOut()) that
+     * can be called from any route handler which needs to terminate a login
+     * session. Invoking logout() will remove the req.user property and clear the
+     * login session (if any).
+     *
+     * For more information on logging out users in Passport.js, check out:
+     * http://passportjs.org/guide/logout/
+     *
+     * @param {Object} req
+     * @param {Object} res
+     */
+    logout: function(req, res) {
         req.logout();
         res.redirect('/');
     },
 
+    /**
+   * Render the registration page
+   *
+   * Just like the login form, the registration form is just simple HTML:
+   *
+      <form role="form" action="/auth/local/register" method="post">
+        <input type="text" name="username" placeholder="Username">
+        <input type="text" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit">Sign up</button>
+      </form>
+   *
+   * @param {Object} req
+   * @param {Object} res
+   */
+    register: function(req, res) {
+        res.locals.flash = _.clone(req.session.flash);
+        res.view();
+        req.session.flash = {};
+    },
 
     /**
-     * Overrides for the settings in `config/controllers.js`
-     * (specific to AuthController)
+     * Create a third-party authentication endpoint
+     *
+     * @param {Object} req
+     * @param {Object} res
      */
-    _config: {}
+    provider: function(req, res) {
+        sails.log.debug("Calling provider endpoint");
+        passport.endpoint(req, res);
+    },
 
+    /**
+     * Create a authentication callback endpoint
+     *
+     * This endpoint handles everything related to creating and verifying Pass-
+     * ports and users, both locally and from third-aprty providers.
+     *
+     * Passport exposes a login() function on req (also aliased as logIn()) that
+     * can be used to establish a login session. When the login operation
+     * completes, user will be assigned to req.user.
+     *
+     * For more information on logging in users in Passport.js, check out:
+     * http://passportjs.org/guide/login/
+     *
+     * @param {Object} req
+     * @param {Object} res
+     */
+    callback: function(req, res) {
+        sails.log.debug("Calling provider callback");
+        passport.callback(req, res, function(err, user) {
+            req.login(user, function(err) {
+                // If an error was thrown, redirect the user to the login which should
+                // take care of rendering the error messages.
+                if (err) {
+                    res.redirect('/login');
+                }
+                // Upon successful login, send the user to the homepage were req.user
+                // will available.
+                else {
+                    console.log('currently logged in user is: ' + req.user.uid);
+                    res.redirect('/dashboard');
+                }
+            });
+        });
+    }
 };
+
+module.exports = AuthController;

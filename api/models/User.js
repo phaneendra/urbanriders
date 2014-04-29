@@ -14,7 +14,7 @@ module.exports = {
         /* e.g.
         nickname: 'string'
         */
-        name: {
+        username: {
             type: 'string'
         },
         email: {
@@ -24,32 +24,22 @@ module.exports = {
             type: 'string',
             unique: true
         },
-        password: {
-            type: 'string'
-        },
-        token: {
-            type: 'string'
-        },
-        toJSON: function() {
-            var obj = this.toObject();
-            delete obj.password;
-            return obj;
+        permits: {
+            collection: 'Permit',
+            via: 'user'
         }
     },
-
-    beforeCreate: function(attrs, next) {
-        if (attrs.password) {
-            bcrypt.genSalt(10, function(err, salt) {
-                if (err) return next(err);
-
-                bcrypt.hash(attrs.password, salt, function(err, hash) {
-                    if (err) return next(err);
-
-                    attrs.password = hash;
-                    next();
-                });
+    getAll: function() {
+        return User.find()
+            .then(function(models) {
+                return [models];
             });
-        }
-        next();
+    },
+
+    getOne: function(id) {
+        return User.findOne(id)
+            .then(function(model) {
+                return [model];
+            });
     }
 };

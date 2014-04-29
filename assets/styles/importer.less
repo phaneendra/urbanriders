@@ -1,0 +1,69 @@
+/**
+ * importer.less
+ *
+ * By default, new Sails projects are configured to compile this file
+ * from LESS to CSS.  Unlike CSS files, LESS files are not compiled and
+ * included automatically unless they are imported below.
+ *
+ * The LESS files imported below are compiled and included in the order
+ * they are listed.  Mixins, variables, etc. should be imported first
+ * so that they can be accessed by subsequent LESS stylesheets.
+ *
+ * (Just like the rest of the asset pipeline bundled in Sails, you can
+ * always omit, customize, or replace this behavior with SASS, SCSS,
+ * or any other Grunt tasks you like.)
+ */
+
+// Flat UI main stylesheet that aggregates all modules
+
+// Loading custom fonts
+//@import url("https://fonts.googleapis.com/css?family=Lato:400,700,700italic,900,400italic,300");
+@import "modules/local-fonts";
+//@import "modules/glyphicons";
+
+// Loading config with variables (changing them leads to changing a color scheme)
+@import "modules/variables";
+
+// Utility mixins for greater good
+@import "modules/mixins";
+
+@import "modules/scaffolding";
+
+// Modules
+@import "modules/type";
+@import "modules/code";
+@import "modules/thumbnails";
+@import "modules/buttons";
+@import "modules/button-groups";
+@import "modules/caret";
+@import "modules/select";
+@import "modules/forms";
+@import "modules/input-icons";
+@import "modules/input-groups";
+@import "modules/checkbox-and-radio";
+@import "modules/navbar";
+@import "modules/tagsinput";
+@import "modules/typeahead";
+@import "modules/progress-bars";
+@import "modules/slider";
+@import "modules/pager";
+@import "modules/pagination";
+@import "modules/tooltip";
+@import "modules/dropdown";
+@import "modules/switch";
+@import "modules/share";
+@import "modules/alerts";
+
+// Examples
+@import "modules/palette";
+@import "modules/tile";
+@import "modules/todo";
+@import "modules/video";
+@import "modules/login";
+@import "modules/signup";
+@import "modules/social";
+
+@import "modules/footer";
+
+// Spaces
+@import "modules/spaces";

@@ -1,116 +1,64 @@
-var passport = require('passport');
-var bcrypt = require('bcrypt');
-var request = require('request');
-var LocalStrategy = require('passport-local').Strategy;
-var RunKeeperStrategy = require('passport-runkeeper').Strategy;
+/**
+ * Passport configuration
+ *
+ * This if the configuration for your Passport.js setup and it where you'd
+ * define the authentication strategies you want your application to employ.
+ *
+ * I have tested the service with all of the providers listed below - if you
+ * come across a provider that for some reason doesn't work, feel free to open
+ * an issue on GitHub.
+ *
+ * Also, authentication scopes can be set through the `scope` property.
+ *
+ * For more information on the available providers, check out:
+ * http://passportjs.org/guide/providers/
+ */
 
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-});
+module.exports.passport = {
 
-passport.deserializeUser(function(id, done) {
-    User.findOneById(id).done(function(err, user) {
-        done(err, user);
-    });
-});
+    // In case you wish to turn off local authentication, simply
+    // set this to false and remove any related routes and endpoints.
+    local: true,
 
-passport.use(new LocalStrategy({
-        usernameField: 'email',
-        passwordField: 'password'
+    runkeeper: {
+        name: 'RunKeeper',
+        protocol: 'oauth2',
+        options: {
+            clientID: process.env.RK_CLIENTID,
+            clientSecret: process.env.RK_CLIENT_SECRET,
+        }
     },
-    function(email, password, done) {
-        console.log(email + password);
 
-        User.findOne({
-            email: email
-        }).done(function(err, user) {
-            if (err) {
-                return done(err);
-            }
-            if (!user) {
-                return done(null, false, {
-                    message: 'Unknown user ' + email
-                });
-            }
-            bcrypt.compare(password, user.password, function(err, isMatch) {
-                if (err) return done(err);
-                console.log('isMatch:' + isMatch);
-                if (!isMatch) {
-                    return done(null, false, {
-                        message: 'Invalid password'
-                    });
-                } else {
-                    return done(null, user);
-                }
-            });
-        });
-    }
-));
-
-
-passport.use(new RunKeeperStrategy({
-        clientID: 'b0790295a9024fbc922779855f9df3ab',
-        clientSecret: '5c84053f1cdc4e3e960200a19c40c2e1',
-        callbackURL: "http://127.0.0.1:1337/auth/runkeeperCallback"
+    /*twitter: {
+        name: 'Twitter',
+        protocol: 'oauth',
+        options: {
+            consumerKey: 'your-consumer-key',
+            consumerSecret: 'your-consumer-secret'
+        }
     },
-    function(accessToken, refreshToken, profile, done) {
-        User.findOne({
-            or: [{
-                uid: parseInt(profile.id)
-            }, {
-                uid: profile.id
-            }]
-        }).done(function(err, user) {
-            if (user) {
-                console.log("Found User " + user);
-                user.token = accessToken;
-                user.save(function(err) {
-                    // Error handling
-                    if (err) {
-                        console.log("Error Saving User " + JSON.stringify(err));
-                        console.log(err);
-                        return done(err);
-                    } else {
-                        // The User was saved successfully!
-                        console.log("User saved:", user);
-                        return done(null, user);
-                    }
-                });
-            } else {
-                var data = {
-                    uid: profile.id,
-                    token: accessToken,
-                    name: ""
-                };
-                console.log("Sending request to runkeeper api to fetch profile : " + profile.id);
-                request.get('http://api.runkeeper.com/profile', {
-                    headers: {
-                        'Authorization': 'Bearer ' + accessToken,
-                        'Content-type': 'application/vnd.com.runkeeper.Profile+json'
-                    }
-                }, function(error, response, body) {
-                    if (response.statusCode == 200) {
-                        body = JSON.parse(body);
-                        data.name = body.name;
-                        console.log('Retrived Profile information');
-                        User.create(data).done(function(err, user) {
-                            // Error handling
-                            if (err) {
-                                console.log("Error Create User " + JSON.stringify(err));
-                                console.log(err);
-                                return done(err);
-                            } else {
-                                // The User was created successfully!
-                                console.log("User created:", user);
-                                return done(null, user);
-                            }
-                        });
-                    } else {
-                        console.log('error: ' + response.statusCode);
-                        console.log(JSON.parse(body));
-                    }
-                });
-            }
-        });
-    }
-));
+
+    github: {
+        name: 'GitHub',
+        protocol: 'oauth2',
+        options: {
+            clientID: 'your-client-id',
+            clientSecret: 'your-client-secret'
+        }
+    },
+
+    facebook: {
+        name: 'Facebook',
+        protocol: 'oauth2',
+        options: {
+            clientID: 'your-client-id',
+            clientSecret: 'your-client-secret'
+        }
+    },
+
+    google: {
+        name: 'Google',
+        protocol: 'openid'
+    }*/
+
+};
