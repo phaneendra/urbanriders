@@ -1,6 +1,8 @@
 Urban Runners
 =============
 
+Build Status - https://www.codeship.io/projects/c7fb5d60-b425-0131-3b9b-2a70137e052b/status
+
 Getting Involved
 ================
 
@@ -16,12 +18,14 @@ Features
 * Third party Authentication using Passport
 * Local authentication using Passport
 * Less UI framework using Flatify
+* Sails Models with Mongodb store
 
 ### TODO
-* Sails Models with Mongodb store
 * Sails Session store with Mongodb
-* Grunt Heroku deployment
+* Stagging app setup using Heroku
+* Continuous deployment using Codeship
 * Frontend framework using Angular JS
+* Create a landing page
 * Basic Dashboard interface
 * Toggle Side Menu
 * Message alert using websockets

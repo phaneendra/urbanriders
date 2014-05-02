@@ -24,8 +24,8 @@ module.exports.passport = {
         name: 'RunKeeper',
         protocol: 'oauth2',
         options: {
-            clientID: process.env.RK_CLIENTID,
-            clientSecret: process.env.RK_CLIENT_SECRET,
+            clientID: process.env.RUNKEEPER_CLIENT_ID,
+            clientSecret: process.env.RUNKEEPER_CLIENT_SECRET,
         }
     },
 
