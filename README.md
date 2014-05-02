@@ -1,7 +1,7 @@
 Urban Runners
 =============
 
-Build Status - https://www.codeship.io/projects/c7fb5d60-b425-0131-3b9b-2a70137e052b/status
+[ ![Codeship Status for phaneendra/urbanrunners](https://www.codeship.io/projects/c7fb5d60-b425-0131-3b9b-2a70137e052b/status?branch=master)](https://www.codeship.io/projects/20268)
 
 Getting Involved
 ================
