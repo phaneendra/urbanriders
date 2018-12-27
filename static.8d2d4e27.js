@@ -635,7 +635,9 @@ function getRoutePath(routePath) {
   } // Be sure to remove the base path
 
 
-  if (false) {}
+  if (true) {
+    routePath = routePath.replace(new RegExp("^\\/?".concat("urbanrunners", "\\/")), '');
+  }
 
   routePath = routePath || '/';
   return pathJoin(routePath);
@@ -861,7 +863,7 @@ function isSSR() {
 }
 
 function getBasePath() {
-  return  false ? undefined : "";
+  return  false ? undefined : "urbanrunners";
 }
 
 ;
@@ -1670,7 +1672,7 @@ function _getRouteInfo() {
           case 16:
             // In production, fetch the JSON file
             // Find the location of the routeInfo.json file
-            routeInfoRoot = ( false ? undefined : "/") || false;
+            routeInfoRoot = ( false ? undefined : "https://phaneendra.github.io/urbanrunners/") || false;
             cacheBuster = process.env.REACT_STATIC_CACHE_BUST ? "?".concat(process.env.REACT_STATIC_CACHE_BUST) : '';
             getPath = "".concat(routeInfoRoot).concat((0, _utils.pathJoin)(path, 'routeInfo.json')).concat(cacheBuster); // If this is a priority call bypass the queue
 
@@ -5980,4 +5982,4 @@ if(false){}}
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=static.3faac10c.js.map
+//# sourceMappingURL=static.8d2d4e27.js.map
