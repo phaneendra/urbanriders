@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{44:function(e,t,n){"use strict";n.r(t);var a=n(0),c=n.n(a),r=n(19);t.default=Object(r.withSiteData)(function(){return c.a.createElement("div",{style:{textAlign:"center"}},c.a.createElement("h1",null,"Welcome to Urban Runners"))})}}]);
+//# sourceMappingURL=src-pages-index.fdb6d837.js.map

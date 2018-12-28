@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{43:function(e,t,n){"use strict";n.r(t);var a=n(0),l=n.n(a),c=n(19),r=n(16);t.default=Object(c.withRouteData)(function(e){var t=e.post;return l.a.createElement("div",null,l.a.createElement(r.Link,{to:"/blog/"},"<"," Back"),l.a.createElement("br",null),l.a.createElement("h3",null,t.title),l.a.createElement("p",null,t.body))})}}]);
+//# sourceMappingURL=src-containers-Post.e402cd61.js.map

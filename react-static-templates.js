@@ -1,7 +1,5 @@
 
-
 import universal, { setHasBabelPlugin } from '/Users/phaneendra/work/urbanrunners/node_modules/react-universal-component/dist/index.js'
-  
 
 
 setHasBabelPlugin()
@@ -20,8 +18,6 @@ const t_2 = universal(import('../src/pages/blog.js'), universalOptions)
 const t_3 = universal(import('../src/containers/Post'), universalOptions)
 const t_4 = universal(import('../src/pages/index.js'), universalOptions)
 
-
-export const template404ID = 0
 
 // Template Map
 export default [
