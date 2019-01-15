@@ -9,7 +9,7 @@
     "bundle": "react-static bundle",
     "export": "react-static export",
     "serve": "serve dist -p 3000 -s",
-    "deploy": "yarn build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
@@ -17,7 +17,8 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-hot-loader": "^4.3.12",
-    "react-static": "^6.0.2"
+    "react-static": "^6.0.2",
+    "react-video-cover": "^1.2.2"
   },
   "devDependencies": {
     "eslint-config-react-tools": "1.x.x",
