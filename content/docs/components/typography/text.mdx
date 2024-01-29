@@ -1,0 +1,539 @@
+---
+title: Text
+description: A foundational text primitive.
+# sourcePath: components/typography/text
+---
+
+{<ComponentExample>
+
+  <Text>The quick brown fox jumps over the lazy dog.</Text>
+</ComponentExample>}
+
+```jsx live=true
+<Text>The quick brown fox jumps over the lazy dog.</Text>
+```
+
+## Examples
+
+### As another element
+
+Use the `as` prop to render text as a `p`, `label`, `div` or `span`. This prop is purely semantic and does not alter visual appearance.
+
+{<ComponentExample>
+
+  <Text as="p">
+    This is a <strong>paragraph</strong> element.
+  </Text>
+  <Text as="label">
+    This is a <strong>label</strong> element.
+  </Text>
+  <Text as="div">
+    This is a <strong>div</strong> element.
+  </Text>
+  <Text as="span">
+    This is a <strong>span</strong> element.
+  </Text>
+</ComponentExample>}
+
+```jsx live=true
+<Text as="p">This is a <strong>paragraph</strong> element.</Text>
+<Text as="label">This is a <strong>label</strong> element.</Text>
+<Text as="div">This is a <strong>div</strong> element.</Text>
+<Text as="span">This is a <strong>span</strong> element.</Text>
+```
+
+### Size
+
+Use the `size` prop to control text size. This prop also provides correct line height and corrective letter spacing—as text size increases, the relative line height and letter spacing decrease.
+The Text component comes with 10 sizes The size can be changed by passing the size prop to the component or by using `text-<size>` tailwind utility classes.
+
+{<ComponentExample>
+
+  <div className="flex flex-col gap-3 w-max">
+    <Text size="xs">xs: The quick brown fox jumps over the lazy dog.</Text>
+    <Text size="sm">sm: The quick brown fox jumps over the lazy dog.</Text>
+    <Text size="base">base: The quick brown fox jumps over the lazy dog.</Text>
+    <Text size="lg">lg: The quick brown fox jumps over the lazy dog.</Text>
+    <Text size="xl">xl: The quick brown fox jumps over the lazy dog.</Text>
+    <Text size="2xl">2xl: The quick brown fox jumps over the lazy dog.</Text>
+    <Text size="3xl">3xl: The quick brown fox jumps over the lazy dog.</Text>
+    <Text size="4xl">4xl: The quick brown fox jumps over the lazy dog.</Text>
+    <Text size="5xl">5xl: The quick brown fox jumps over the lazy dog.</Text>
+    <Text size="6xl">6xl: The quick brown fox jumps over the lazy dog.</Text>
+  </div>
+</ComponentExample>}
+
+```jsx live=true scroll=true
+<div className="flex flex-col gap-3">
+  <Text size="xs">xs: The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="sm">sm: The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="base">base: The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="lg">lg: The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="xl">xl: The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="2xl">2xl: The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="3xl">3xl: The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="4xl">4xl: The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="5xl">5xl: The quick brown fox jumps over the lazy dog.</Text>
+  <Text size="6xl">6xl: The quick brown fox jumps over the lazy dog.</Text>
+</div>
+```
+
+Sizes `sm to lg` are designed to work well for long-form content.
+
+{<ComponentExample>
+
+  <Text as="p" size="lg" className="mb-5">
+    The goal of typography is to relate font size, line height, and line width
+    in a proportional way that maximizes beauty and makes reading easier and
+    more pleasant. The question is: What proportion(s) will give us the best
+    results? The golden ratio is often observed in nature where beauty and
+    utility intersect; perhaps we can use this “divine” proportion to enhance
+    these attributes in our typography.
+  </Text>
+  <Text as="p" className="mb-5" size="base">
+    The goal of typography is to relate font size, line height, and line width
+    in a proportional way that maximizes beauty and makes reading easier and
+    more pleasant. The question is: What proportion(s) will give us the best
+    results? The golden ratio is often observed in nature where beauty and
+    utility intersect; perhaps we can use this “divine” proportion to enhance
+    these attributes in our typography.
+  </Text>
+  <Text as="p" size="sm" className="text-fgsubtle">
+    The goal of typography is to relate font size, line height, and line width
+    in a proportional way that maximizes beauty and makes reading easier and
+    more pleasant. The question is: What proportion(s) will give us the best
+    results? The golden ratio is often observed in nature where beauty and
+    utility intersect; perhaps we can use this “divine” proportion to enhance
+    these attributes in our typography.
+  </Text>
+</ComponentExample>}
+
+```jsx live=true
+<Text as="p" size="lg" className="mb-5">
+  The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant. The question is: What proportion(s) will give us the best results? The golden ratio is often observed in nature where beauty and utility intersect; perhaps we can use this “divine” proportion to enhance these attributes in our typography.
+</Text>
+
+<Text as="p" className="mb-5" size="base">
+  The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant. The question is: What proportion(s) will give us the best results? The golden ratio is often observed in nature where beauty and utility intersect; perhaps we can use this “divine” proportion to enhance these attributes in our typography.
+</Text>
+
+<Text as="p" size="sm" className="text-fgsubtle">
+  The goal of typography is to relate font size, line height, and line width in a proportional way that maximizes beauty and makes reading easier and more pleasant. The question is: What proportion(s) will give us the best results? The golden ratio is often observed in nature where beauty and utility intersect; perhaps we can use this “divine” proportion to enhance these attributes in our typography.
+</Text>
+```
+
+Sizes `xs to base` are designed to work well for UI labels.
+
+{<ComponentExample>
+
+  <div className="grid grid-cols-2 gap-5 p-3 item-center">
+    <Flex direction="column">
+      <Text size="base" weight="bold">
+        Get started
+      </Text>
+      <Text size="sm" className="text-fgsubtle">
+        Start your next project in minutes
+      </Text>
+    </Flex>
+    <Flex direction="column">
+      <Text size="base" weight="bold">
+        Get started
+      </Text>
+      <Text size="base" className="text-fgsubtle">
+        Start your next project in minutes
+      </Text>
+    </Flex>
+    <Flex direction="column">
+      <Text size="base" weight="bold">
+        Get started
+      </Text>
+      <Text size="xs" className="text-fgsubtle">
+        Start your next project in minutes
+      </Text>
+    </Flex>
+    <Flex direction="column">
+      <Text size="xs" weight="bold">
+        Get started
+      </Text>
+      <Text size="xs" className="text-fgsubtle">
+        Start your next project in minutes
+      </Text>
+    </Flex>
+  </div>
+</ComponentExample>}
+
+```jsx live=true
+<div className="grid grid-cols-2 gap-5 p-3 item-center">
+  <Flex direction="column">
+    <Text size="base" weight="bold">
+      Get started
+    </Text>
+    <Text size="sm" className="text-fgsubtle">
+      Start your next project in minutes
+    </Text>
+  </Flex>
+
+  <Flex direction="column">
+    <Text size="base" weight="bold">
+      Get started
+    </Text>
+    <Text size="base" className="text-fgsubtle">
+      Start your next project in minutes
+    </Text>
+  </Flex>
+
+  <Flex direction="column">
+    <Text size="base" weight="bold">
+      Get started
+    </Text>
+    <Text size="xs" className="text-fgsubtle">
+      Start your next project in minutes
+    </Text>
+  </Flex>
+
+  <Flex direction="column">
+    <Text size="xs" weight="bold">
+      Get started
+    </Text>
+    <Text size="xs" className="text-fgsubtle">
+      Start your next project in minutes
+    </Text>
+  </Flex>
+</div>
+```
+
+### Weight
+
+Use the `weight` prop to set the text weight.
+
+{<ComponentExample>
+
+<Text weight="regular" as="div">
+  The quick brown fox jumps over the lazy dog.
+</Text>
+
+{" "}
+
+<Text weight="medium" as="div">
+  The quick brown fox jumps over the lazy dog.
+</Text>
+
+  <Text weight="bold" as="div">
+    The quick brown fox jumps over the lazy dog.
+  </Text>
+</ComponentExample>}
+
+```jsx live=true scroll=true
+<Text weight="regular" as="div">
+  The quick brown fox jumps over the lazy dog.
+</Text>
+
+<Text weight="medium" as="div">
+  The quick brown fox jumps over the lazy dog.
+</Text>
+
+<Text weight="bold" as="div">
+  The quick brown fox jumps over the lazy dog.
+</Text>
+```
+
+### Align
+
+Use the `align` prop to set text alignment.
+
+{<ComponentExample>
+
+  <Text align="left" as="div">Left-aligned</Text>
+  <Text align="center" as="div">Center-aligned</Text>
+  <Text align="right" as="div">Right-aligned</Text>
+</ComponentExample>}
+
+```jsx live=true
+<Text align="left" as="div">Left-aligned</Text>
+<Text align="center" as="div">Center-aligned</Text>
+<Text align="right" as="div">Right-aligned</Text>
+```
+
+### Color
+
+Use the tailwind color classes to assign a specific [color](/themes/docs/theme/color). The text colors are designed to achieve at least Lc 60 APCA contrast over common background colors.
+
+{<ComponentExample>
+
+<div className="grid grid-cols-[1fr_5fr] gap-5 p-3 item-center">
+  <Text size="base" weight="bold">
+    Default
+  </Text>
+  <div className="flex flex-row flex-wrap gap-5">
+    <Text className="text-fg">
+      Text foreground color, Classname : <Code>text-fg</Code>.
+    </Text>
+    <Text className="text-fgsubtle">
+      Text muted color, Classname : <Code>text-fgsubtle</Code>.
+    </Text>
+    <Text className="text-fglink">
+      Text link color, Classname : <Code>text-fglink</Code>.
+    </Text>
+    <Text className="text-contrast">
+      Text constrast color, Classname : <Code>text-contrast</Code>.
+    </Text>
+  </div>
+<Text size="base" weight="bold">
+  Primary
+</Text>
+<div className="flex flex-row flex-wrap gap-5">
+  <div className="flex items-center p-2 rounded-md bg-primary-uisoft">
+    <Text className="text-primary-fg">
+      Text foreground color, Classname : <Code>text-primary-fg</Code>.
+    </Text>
+  </div>
+  <div className="flex items-center p-2 rounded-md bg-primary-uisoft">
+    <Text className="text-primary-fgsubtle">
+      Text muted color, Classname : <Code>text-primary-fg</Code>.
+    </Text>
+  </div>
+  <div className="flex items-center p-2 rounded-md">
+    <Text className="text-primary-fglink">
+      Text link color, Classname : <Code>text-primary-fg</Code>.
+    </Text>
+  </div>
+  <div className="flex items-center p-2 rounded-md bg-primary-uisolid">
+    <Text className="text-primary-contrast">
+      Text contrast color, Classname : <Code>text-primary-fg</Code>.
+    </Text>
+  </div>
+</div>
+<Text size="base" weight="bold">
+  Secondary
+</Text>
+<div className="flex flex-row flex-wrap gap-5">
+  <div className="flex items-center p-2 rounded-md bg-secondary-uisoft">
+    <Text className="text-secondary-fg">
+      Text foreground color, Classname : <Code>text-secondary-fg</Code>.
+    </Text>
+  </div>
+  <div className="flex items-center p-2 rounded-md bg-secondary-uisoft">
+    <Text className="text-secondary-fgsubtle">
+      Text muted color, Classname : <Code>text-secondary-fgsubtle</Code>.
+    </Text>
+  </div>
+  <div className="flex items-center p-2 rounded-md">
+    <Text className="text-secondary-fglink">
+      Text link color, Classname : <Code>text-secondary-fglink</Code>.
+    </Text>
+  </div>
+  <div className="flex items-center p-2 rounded-md bg-secondary-uisolid">
+    <Text className="text-secondary-contrast">
+      Text contrast color, Classname : <Code>text-secondary-contrast</Code>.
+    </Text>
+  </div>
+</div>
+<Text size="base" weight="bold">
+  Accent
+</Text>
+<div className="flex flex-row flex-wrap gap-5">
+  <div className="flex items-center p-2 rounded-md bg-accent-uisoft">
+    <Text className="text-accent-fg">
+      Text foreground color, Classname : <Code>text-accent-fg</Code>.
+    </Text>
+  </div>
+  <div className="flex items-center p-2 rounded-md bg-accent-uisoft">
+    <Text className="text-accent-fgsubtle">
+      Text muted color, Classname : <Code>text-accent-fgsubtle</Code>.
+    </Text>
+  </div>
+  <div className="flex items-center p-2 rounded-md">
+    <Text className="text-accent-fglink">
+      Text link color, Classname : <Code>text-accent-fglink</Code>.
+    </Text>
+  </div>
+  <div className="flex items-center p-2 rounded-md bg-accent-uisolid">
+    <Text className="text-accent-contrast">
+      Text contrast color, Classname : <Code>text-accent-contrast</Code>.
+    </Text>
+  </div>
+</div>
+<Text size="base" weight="bold">
+    Destructive
+  </Text>
+  <div className="flex flex-row flex-wrap gap-5">
+    <div className="flex items-center p-2 rounded-md bg-destructive-uisoft">
+      <Text className="text-destructive-fg">
+        Text foreground color, Classname : <Code>text-destructive-fg</Code>.
+      </Text>
+    </div>
+    <div className="flex items-center p-2 rounded-md bg-destructive-uisoft">
+      <Text className="text-destructive-fgsubtle">
+        Text muted color, Classname : <Code>text-destructive-fgsubtle</Code>.
+      </Text>
+    </div>
+    <div className="flex items-center p-2 rounded-md">
+      <Text className="text-destructive-fglink">
+        Text link color, Classname : <Code>text-destructive-fglink</Code>.
+      </Text>
+    </div>
+    <div className="flex items-center p-2 rounded-md bg-destructive-uisolid">
+      <Text className="text-destructive-contrast">
+        Text contrast color, Classname : <Code>text-destructive-contrast</Code>.
+      </Text>
+    </div>
+  </div>
+</div>
+</ComponentExample>}
+
+```jsx live=true scroll=true
+<div className="grid grid-cols-[1fr_5fr] gap-5 p-3 item-center">
+  <Text size="base" weight="bold">
+    Default
+  </Text>
+  <div className="flex flex-row flex-wrap gap-5">
+    <Text className="text-fg">
+      Text foreground color, Classname : <Code>text-fg</Code>.
+    </Text>
+    <Text className="text-fgsubtle">
+      Text muted color, Classname : <Code>text-fgsubtle</Code>.
+    </Text>
+    <Text className="text-fglink">
+      Text link color, Classname : <Code>text-fglink</Code>.
+    </Text>
+    <Text className="text-contrast">
+      Text constrast color, Classname : <Code>text-contrast</Code>.
+    </Text>
+  </div>
+
+  <Text size="base" weight="bold">
+    Primary
+  </Text>
+  <div className="flex flex-row flex-wrap gap-5">
+    <div className="flex items-center p-2 rounded-md bg-primary-uisoft">
+      <Text className="text-primary-fg">
+        Text foreground color, Classname : <Code>text-primary-fg</Code>.
+      </Text>
+    </div>
+    <div className="flex items-center p-2 rounded-md bg-primary-uisoft">
+      <Text className="text-primary-fgsubtle">
+        Text muted color, Classname : <Code>text-primary-fg</Code>.
+      </Text>
+    </div>
+    <div className="flex items-center p-2 rounded-md">
+      <Text className="text-primary-fglink">
+        Text link color, Classname : <Code>text-primary-fg</Code>.
+      </Text>
+    </div>
+    <div className="flex items-center p-2 rounded-md bg-primary-uisolid">
+      <Text className="text-primary-contrast">
+        Text contrast color, Classname : <Code>text-primary-fg</Code>.
+      </Text>
+    </div>
+  </div>
+
+  <Text size="base" weight="bold">
+    Secondary
+  </Text>
+  <div className="flex flex-row flex-wrap gap-5">
+    <div className="flex items-center p-2 rounded-md bg-secondary-uisoft">
+      <Text className="text-secondary-fg">
+        Text foreground color, Classname : <Code>text-secondary-fg</Code>.
+      </Text>
+    </div>
+    <div className="flex items-center p-2 rounded-md bg-secondary-uisoft">
+      <Text className="text-secondary-fgsubtle">
+        Text muted color, Classname : <Code>text-secondary-fgsubtle</Code>.
+      </Text>
+    </div>
+    <div className="flex items-center p-2 rounded-md">
+      <Text className="text-secondary-fglink">
+        Text link color, Classname : <Code>text-secondary-fglink</Code>.
+      </Text>
+    </div>
+    <div className="flex items-center p-2 rounded-md bg-secondary-uisolid">
+      <Text className="text-secondary-contrast">
+        Text contrast color, Classname : <Code>text-secondary-contrast</Code>.
+      </Text>
+    </div>
+  </div>
+
+  <Text size="base" weight="bold">
+    Accent
+  </Text>
+  <div className="flex flex-row flex-wrap gap-5">
+    <div className="flex items-center p-2 rounded-md bg-accent-uisoft">
+      <Text className="text-accent-fg">
+        Text foreground color, Classname : <Code>text-accent-fg</Code>.
+      </Text>
+    </div>
+    <div className="flex items-center p-2 rounded-md bg-accent-uisoft">
+      <Text className="text-accent-fgsubtle">
+        Text muted color, Classname : <Code>text-accent-fgsubtle</Code>.
+      </Text>
+    </div>
+    <div className="flex items-center p-2 rounded-md">
+      <Text className="text-accent-fglink">
+        Text link color, Classname : <Code>text-accent-fglink</Code>.
+      </Text>
+    </div>
+    <div className="flex items-center p-2 rounded-md bg-accent-uisolid">
+      <Text className="text-accent-contrast">
+        Text contrast color, Classname : <Code>text-accent-contrast</Code>.
+      </Text>
+    </div>
+  </div>
+
+  <Text size="base" weight="bold">
+    Destructive
+  </Text>
+  <div className="flex flex-row flex-wrap gap-5">
+    <div className="flex items-center p-2 rounded-md bg-destructive-uisoft">
+      <Text className="text-destructive-fg">
+        Text foreground color, Classname : <Code>text-destructive-fg</Code>.
+      </Text>
+    </div>
+    <div className="flex items-center p-2 rounded-md bg-destructive-uisoft">
+      <Text className="text-destructive-fgsubtle">
+        Text muted color, Classname : <Code>text-destructive-fgsubtle</Code>.
+      </Text>
+    </div>
+    <div className="flex items-center p-2 rounded-md">
+      <Text className="text-destructive-fglink">
+        Text link color, Classname : <Code>text-destructive-fglink</Code>.
+      </Text>
+    </div>
+    <div className="flex items-center p-2 rounded-md bg-destructive-uisolid">
+      <Text className="text-destructive-contrast">
+        Text contrast color, Classname : <Code>text-destructive-contrast</Code>.
+      </Text>
+    </div>
+  </div>
+</div>
+```
+
+### With formatting
+
+Compose `Text` with formatting components to add emphasis and structure to content.
+
+```jsx live="true"
+<Text size="xl">
+  Look, such a helpful <Link href="#">link</Link>, an <Em>italic emphasis</Em>,
+  a piece of computer <Code>code</Code>, and even a hotkey combination{" "}
+  <Kbd>⇧⌘A</Kbd> within the text.
+</Text>
+```
+
+### With form controls
+
+Composing `Text` with a form control like [`Checkbox`](/themes/docs/components/checkbox), [`RadioGroup`](/themes/docs/components/radio-group), or [`Switch`](/themes/docs/components/switch) automatically centers the control with the first line of text, even when the text is multi-line.
+
+```jsx live="true"
+<Box style={{ maxWidth: 300 }}>
+  <Text as="label" size="base">
+    <Flex gap="2">
+      <Checkbox defaultChecked /> I understand that these documents are
+      confidential and cannot be shared with a third party.
+    </Flex>
+  </Text>
+</Box>
+```
+
+## API Reference
+
+This component is based on the `span` element

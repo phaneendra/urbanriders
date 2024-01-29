@@ -1,0 +1,185 @@
+---
+title: Icon Button
+description: A button designed specifically for usage with a single icon.
+# sourcePath: components/icon-button
+---
+
+{<ComponentExample>
+
+  <IconButton>
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+</ComponentExample>}
+
+```jsx live=true
+<IconButton>
+  <Icons.search className="h-8 w-8" />
+</IconButton>
+```
+
+## API Reference
+
+This component is based on the `button` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the button.
+
+{<ComponentExample>
+
+<Flex align="center" gap="3">
+  <IconButton size="3" variant="soft">
+    <Icons.search className="h-10 w-10" />
+  </IconButton>
+  <IconButton size="2" variant="soft">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton size="1" variant="soft">
+    <Icons.search className="h-6 w-6" />
+  </IconButton>
+</Flex>
+</ComponentExample>}
+
+```jsx live=true
+<Flex align="center" gap="3">
+  <IconButton size="3" variant="soft">
+    <Icons.search className="h-10 w-10" />
+  </IconButton>
+  <IconButton size="2" variant="soft">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton size="1" variant="soft">
+    <Icons.search className="h-6 w-6" />
+  </IconButton>
+</Flex>
+```
+
+### Variant
+
+Use the `variant` prop to control the visual style of the button.
+
+{<ComponentExample>
+
+<Flex gap="3">
+  <IconButton variant="solid">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton variant="soft">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton variant="surface">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton variant="outline">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+</Flex>
+</ComponentExample>}
+
+```jsx live=true
+<Flex gap="3">
+  <IconButton variant="solid">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton variant="soft">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton variant="surface">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton variant="outline">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+</Flex>
+```
+
+#### Ghost
+
+Use the `ghost` variant to display a button without chrome. Ghost buttons behave like text in layout, as they use a negative margin to optically align themselves against their siblings while maintaining the padding in active and hover states.
+
+{<ComponentExample>
+
+  <IconButton variant="ghost">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+</ComponentExample>}
+
+```jsx live=true style="lineHeight: 0"
+<IconButton variant="ghost">
+  <Icons.search className="h-8 w-8" />
+</IconButton>
+```
+
+### Color
+
+Use the `intent` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+
+{<ComponentExample>
+
+<Flex gap="3">
+  <IconButton intent="primary" variant="soft">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton intent="secondary" variant="soft">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton intent="accent" variant="soft">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton intent="destructive" variant="soft">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+</Flex>
+</ComponentExample>}
+
+```jsx live=true
+<Flex gap="3">
+  <IconButton intent="primary" variant="soft">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton intent="secondary" variant="soft">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton intent="accent" variant="soft">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton intent="destructive" variant="soft">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+</Flex>
+```
+
+### Radius
+
+Use the `radius` prop to assign a specific radius value, ignoring the global theme.
+
+{<ComponentExample>
+
+<Flex gap="3">
+  <IconButton radius="none" variant="soft">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton radius="large" variant="soft">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+  <IconButton radius="full" variant="soft">
+    <Icons.search className="h-8 w-8" />
+  </IconButton>
+</Flex>
+</ComponentExample>}
+
+```jsx live=true
+<Flex gap="3">
+  <IconButton radius="none" variant="soft">
+    <MagnifyingGlassIcon width="18" height="18" />
+  </IconButton>
+  <IconButton radius="large" variant="soft">
+    <MagnifyingGlassIcon width="18" height="18" />
+  </IconButton>
+  <IconButton radius="full" variant="soft">
+    <MagnifyingGlassIcon width="18" height="18" />
+  </IconButton>
+</Flex>
+```

@@ -1,0 +1,52 @@
+---
+title: Flex
+description: Component for creating flex layouts.
+# sourcePath: components/flex
+---
+
+<ComponentExample>
+  <Flex gap="3">
+    <Box className="w-16 h-16">
+      <DecorativeBox />
+    </Box>
+    <Box className="w-16 h-16">
+      <DecorativeBox />
+    </Box>
+    <Box className="w-16 h-16">
+      <DecorativeBox />
+    </Box>
+    <Box className="w-16 h-16">
+      <DecorativeBox />
+    </Box>
+    <Box className="w-16 h-16">
+      <DecorativeBox />
+    </Box>
+  </Flex>
+</ComponentExample>
+
+```jsx live=true
+<Flex gap="3">
+  <Box className="w-16 h-16">
+    <DecorativeBox />
+  </Box>
+  <Box className="w-16 h-16">
+    <DecorativeBox />
+  </Box>
+  <Box className="w-16 h-16">
+    <DecorativeBox />
+  </Box>
+  <Box className="w-16 h-16">
+    <DecorativeBox />
+  </Box>
+  <Box className="w-16 h-16">
+    <DecorativeBox />
+  </Box>
+</Flex>
+```
+
+## API Reference
+
+This component is based on the `div` element and supports [common margin props](/themes/docs/theme/layout#margin-props) via tailwindcss classes.
+Use these props to create flex layouts.
+
+The following props are shared between [Box](./box), [Flex](./flex), [Grid](./grid), [Container](./container) and [Section](./section) layout components.

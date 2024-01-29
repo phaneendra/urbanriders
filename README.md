@@ -1,51 +1,133 @@
-# Urban Runners
+# Urban Riders
 
-Urban Runners is a trading card game, or TCG, that is played right on your web browser.
+An open source Web Application and platform to organize and participate in cycling events, connect to Strava and compete in challenges, with exclusive rewards and gamified achievements.
 
-## Game Rules
+> **Warning**
+> This app is a work in progress. I'm building this in public. You can follow the progress on Twitter [@phaneendrak](https://twitter.com/phaneendrak).
+> See the roadmap below or follow my log
 
-## Game Play
+## About this project
 
-At the start of each match, both players are randomly given 4 crew members to from their decks and chose which of these will participate in each of the match’s four rounds.
+This platform is specific for one cycling club and enables to manage various club activities, challenges, events and blogs. Some of the Key features being built or planned to be built
 
-Players (and individual crew) gain experience after each match.
+- Basic Website features including a responsive header footer and mobile navigation
+- Marketing home page which display
+  - Latest Posts
+  - Featured Events
+  - Featured Products
+  - Recent Marketplace Ads
+- A ecommerce Marketplace where users and members will be able to see
+  - Featured Products
+  - Recent Ads
+  - Featured Stores
+- A Events listing page enabling users and members find and participate in events
+- A Blogs listing page which shows
+  - Latest Posts
+  - Featured Posts ( Most liked)
+  - Blog categories and posts under it
+  - Various Tags for blogs
+- A Challenges Page ( Show what you get by login) (TBD)
+- A basic dashboard shell with a page header, side navigation and a botom bar for mobile view
+- A dashboard which enabled admins to
+  - create and edit events
+  - create and edit challenges
+  - manage users and members
+  - manage budgets and inventory
+- A dashboard which enable users and members to
+  - view and edit profile
+  - create posts
+  - manage their settings and preferences
+  - manage their orders
+  - view and subscribe to challenges
+  - view club activities and leaderboards
+  - view their fitness levels and progress
+  - view their stats and personal records
+  - view their achivements and badges
 
-Crew gain new abilities and increase in power as they rank up while players gain access to higher level channels and earn ‘coins’ with which to purchase new coins or items.
+## Note on Performance
 
-### Character's card
+> **Warning** > **Expect some performance hits when testing the dashboard**.
+> If you see something broken, you can raise an Issue .
 
-When you sign up, you'll receive your first 8 Characters free of charge. At each level, a character is defined by its Power (P) and Damage (D). Some characters also get a special ability when they reach a certain level.
+## Roadmap
 
-All of this information is indicated on the character's card.
+- [x] ~Add MDX support for basic pages~
+- [x] ~Build marketing pages~
+- [x] ~Payments using Stripe or Razor Pay~
+- [x] ~Responsive styles~
+- [x] ~Add OG image for blog using @vercel/og~
+- [x] Dark mode
 
-Labled
+## Technical Features
 
-(1) Character's name - Self explained.
+- New `/app` dir,
+- Routing, Layouts, Nested Layouts and Layout Groups
+- Data Fetching, Caching and Mutation
+- Loading UI
+- Route handlers
+- Metadata files
+- Server and Client Components
+- API Routes and Middlewares
+- Authentication using **Lucia.js**
+- Database on **Convex**
+- UI Components built using **Radix UI**
+- Documentation and blog using **MDX** and **Contentlayer**
+- Payments and Subscriptions using **Stripe**
+  - You can test the payment flow end to end using Stripe's test card numbers
+- Styled using **Tailwind CSS**
+- Validations using **Zod**
+- Written in **TypeScript**
 
-(2) Character's level/star count - Self explained
+## Known Issues
 
-(3) Illustration - The card's art.
+A list of things not working right now:
 
-(4) Power - Power is also known as attack. If you have, in this case, 2 power, then for every pill you use, it will add 2 attack.
+1. ~Authentication (use email)~
+2. ~[Next.js 13: Client side navigation does not update head](https://github.com/vercel/next.js/issues/42414)~
+3. [Cannot use opengraph-image.tsx inside catch-all routes](https://github.com/vercel/next.js/issues/48162)
 
-(5) Damage - Damage is how many life points you will take away from the opponent.
+## Why not tRPC, Turborepo or X?
 
-(6) Ability - Abilities can be anything from helping your card win the round to applying Poison or reducing the enemy's Damage.
+I might add this later. For now, I want to see how far we can get using Next.js only.
 
-(7) Clan Bonus - If you have 2 cards of the same clan in your hand, their Clan's Bonus will be activated.
+If you have some suggestions, feel free to create an issue.
 
-(8) Clan Logo - The picture of the Clan the character is in.
+## Running Locally
 
-### Card XP
+- Install dependencies using pnpm:
 
-Cards get XP which is then used automatically to level up cards to their final level. The ammount of XP needed per level is shown below.
+```sh
+pnpm install
+```
 
-Level 1 - 2: 500xp
+- Copy `.env.example` to `.env.local` and update the variables.
 
-Level 2 - 3: 1500xp
+```sh
+cp .env.example .env.local
+```
 
-Level 3 - 4: 3000xp
+- Start the development server:
 
-Level 4 - 5: 5000xp
+```sh
+pnpm dev
+```
 
-A player gains XP when they level up their cards, hence why cards that aren't fully upgraded sell for more coins on the Market.
+To test the payments flow, follow these steps:
+
+1. Sign up for Stripe for free at `https://stripe.com/`
+2. Install the stripe CLI
+
+3. Run in local
+   `stripe listen --forward-to localhost:5173/stripe`
+   or
+   register the webhook endpoint’s URL `https://<CONVEX DEPLOYMENT>.convex.site/stripe` using the Webhooks section in the Developer Dashboard
+
+4. Copy the "Your webhook signing secret" from the output of the listen command, and set it as `STRIPE_WEBHOOKS_SECRET` environment variable on your Convex dashboard
+5. Copy your test secret API key from the code example on `https://stripe.com/docs/checkout/quickstart` and set it as `STRIPE_API_KEY` environment variable on your Convex dashboard
+
+You can then use the test credit card details to go through the payment flow, see `https://stripe.com/docs/checkout/quickstart#testing`
+Test credit card for India : 4000003560000008
+
+## License
+
+Licensed under the [MIT license](https://github.com/phaneendra/urbanriders/blob/main/LICENSE.md).

@@ -1,0 +1,103 @@
+---
+title: Link
+description: A semantic element for navigation between pages.
+# sourcePath: components/link
+---
+
+```jsx live=true
+<Link>The quick brown fox jumps over the lazy dog.</Link>
+```
+
+## Examples
+
+### Size
+
+Use the `size` prop to control the size of the link. The prop also provides correct line height and corrective letter spacing—as text size increases, the relative line height and letter spacing decrease.
+
+{<ComponentExample>
+
+<div className="flex flex-col gap-3 w-max">
+  <Link size="xs">xs: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="sm">sm: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="base">base: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="lg">lg: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="xl">xl: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="2xl">2xl: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="3xl">3xl: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="4xl">4xl: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="5xl">5xl: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="6xl">6xl: The quick brown fox jumps over the lazy dog.</Link>
+</div>
+</ComponentExample>}
+
+```jsx live=true scroll=true
+<div className="flex flex-col gap-3 w-max">
+  <Link size="xs">xs: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="sm">sm: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="base">base: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="lg">lg: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="xl">xl: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="2xl">2xl: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="3xl">3xl: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="4xl">4xl: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="5xl">5xl: The quick brown fox jumps over the lazy dog.</Link>
+  <Link size="6xl">6xl: The quick brown fox jumps over the lazy dog.</Link>
+</div>
+```
+
+### Weight
+
+Use the `weight` prop to set the text weight.
+
+{<ComponentExample>
+
+<Flex direction="column">
+  <Link weight="regular">The quick brown fox jumps over the lazy dog.</Link>
+  <Link weight="medium">The quick brown fox jumps over the lazy dog.</Link>
+  <Link weight="bold">The quick brown fox jumps over the lazy dog.</Link>
+</Flex>
+</ComponentExample>}
+
+```jsx live="true"
+<Flex direction="column">
+  <Link weight="regular">The quick brown fox jumps over the lazy dog.</Link>
+  <Link weight="medium">The quick brown fox jumps over the lazy dog.</Link>
+  <Link weight="bold">The quick brown fox jumps over the lazy dog.</Link>
+</Flex>
+```
+
+### Color
+
+Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme.
+
+{<ComponentExample>
+
+</ComponentExample>}
+
+```jsx live=true scroll=true
+<Flex direction="column">
+  <Link color="indigo">The quick brown fox jumps over the lazy dog.</Link>
+  <Link color="cyan">The quick brown fox jumps over the lazy dog.</Link>
+  <Link color="orange">The quick brown fox jumps over the lazy dog.</Link>
+  <Link color="crimson">The quick brown fox jumps over the lazy dog.</Link>
+</Flex>
+```
+
+### Underline
+
+Use the `underline` prop to manage the visibility of the underline affordance.
+
+{<ComponentExample>
+
+</ComponentExample>}
+
+```jsx live="true" scroll=true
+<Flex direction="column">
+  <Link underline="hover">The quick brown fox jumps over the lazy dog.</Link>
+  <Link underline="always">The quick brown fox jumps over the lazy dog.</Link>
+</Flex>
+```
+
+## API Reference
+
+This component is based on the `a` element and supports [common margin props](/themes/docs/theme/layout#margin-props).
