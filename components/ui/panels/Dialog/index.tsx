@@ -62,7 +62,7 @@ const DialogContent = React.forwardRef<
           "absolute right-4 top-4"
         )}
       >
-        <X className="h-4 w-4" />
+        <X className="size-4" />
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
@@ -133,4 +133,6 @@ export {
   DialogFooter,
   DialogTitle,
   DialogDescription,
+  dialogContentStyles,
+  dialogOverlayStyles,
 };

@@ -534,6 +534,7 @@ export const cpPreset = {
         3: "calc(12px * var(--scaling))",
         3.5: "calc(14px * var(--scaling))",
         4: "calc(16px * var(--scaling))",
+        4.5: "calc(18px * var(--scaling))",
         5: "calc(20px * var(--scaling))",
         6: "calc(24px * var(--scaling))",
         7: "calc(28px * var(--scaling))",

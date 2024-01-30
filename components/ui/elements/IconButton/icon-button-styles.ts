@@ -2,17 +2,17 @@ import { cva } from "class-variance-authority";
 
 export const iconButtonStyles = cva(
   [
-    "inline-flex items-center justify-center box-border shrink-0 select-none align-top",
+    "inline-flex items-center justify-center box-border shrink-0 select-none",
     "data-[disabled=true]:cursor-not-allowed data-[disabled=true]:filter-none",
     "data-[disabled=true]:text-fgdisabled data-[disabled=true]:bg-disabled",
   ],
   {
     variants: {
       size: {
-        xs: "",
-        sm: "",
-        base: "",
-        lg: "",
+        xs: "[&_svg]:w-4 [&_svg]:h-4",
+        sm: "[&_svg]:w-4 [&_svg]:h-4",
+        base: "[&_svg]:w-4.5 [&_svg]:h-4.5",
+        lg: "[&_svg]:w-5 [&_svg]:h-5",
       },
       weight: {
         light: "font-light",
@@ -578,43 +578,43 @@ export const iconButtonStyles = cva(
       {
         size: "xs",
         variant: ["solid", "soft", "surface", "outline"],
-        className: "h-6",
+        className: "h-6 w-6",
       },
       {
         size: "sm",
         variant: ["solid", "soft", "surface", "outline"],
-        className: "h-7",
+        className: "h-8 w-8",
       },
       {
         size: "base",
         variant: ["solid", "soft", "surface", "outline"],
-        className: "h-8",
+        className: "h-10 w-10",
       },
       {
         size: "lg",
         variant: ["solid", "soft", "surface", "outline"],
-        className: "h-9",
+        className: "h-12 w-12",
       },
 
       {
         size: "xs",
         variant: ["ghost"],
-        className: "px-2 py-1 -mx-2 -my-1",
+        className: "p-1 -m-1",
       },
       {
         size: "sm",
         variant: ["ghost"],
-        className: "px-2 py-1 -mx-2 -my-1",
+        className: "p-1.5 -m-1.5",
       },
       {
         size: "base",
         variant: ["ghost"],
-        className: "px-3 py-1.5 -mx-3 -my-1.5",
+        className: "p-2 -m-2",
       },
       {
         size: "lg",
         variant: ["ghost"],
-        className: "px-4 py-2 -mx-4 -my-2",
+        className: "p-3 -m-3",
       },
 
       // sizes and radius
@@ -680,7 +680,7 @@ export const iconButtonStyles = cva(
       },
     ],
     defaultVariants: {
-      size: "xs",
+      size: "base",
       align: "center",
       radius: "medium",
       variant: "soft",

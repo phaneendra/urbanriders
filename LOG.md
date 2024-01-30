@@ -15,6 +15,25 @@
 
 ## Entries
 
+### 30th Jan 2024
+
+**Todays Progress:**
+
+- Fixed Icon Button component stylings
+- Started work on fixing Vercel Build failures, still needs more work and restructuing to include src folder due to clash between include and exclude in tsconfig
+
+**Thoughts:**
+
+- Thought of how to track time so now experimenting with Code Time vscode plugin to track active coding time.
+- Next steps : Fix Button component
+- Next steps : Vercel Build failing due to type errors in various components
+
+**Link to works:**
+
+- (Icon Buttom Doc)[content/docs/components/elements/icon-button.mdx]
+
+---
+
 ### 29th Jan 2024
 
 **Todays Progress:**
@@ -24,11 +43,9 @@
 
 **Thoughts:**
 
-Next steps
-
-- Fix Icon Button component
-- Fix Button component
-- Vercel Build failing due to type errors in various components
+- Next steps : Fix Icon Button component
+- Next steps : Fix Button component
+- Next steps : Vercel Build failing due to type errors in various components
 
 **Link to works:**
 
@@ -43,14 +60,12 @@ Next steps
 
 **Todays Progress:**
 
-- entry
+- <Entry>
 
 **Thoughts:**
 
-Next steps
-
-- entry
+- <Entry>
 
 **Link to works:**
 
-- links
+- <Entry>

@@ -3,8 +3,8 @@
 An open source Web Application and platform to organize and participate in cycling events, connect to Strava and compete in challenges, with exclusive rewards and gamified achievements.
 
 > **Warning**
-> This app is a work in progress. I'm building this in public. You can follow the progress on Twitter [@phaneendrak](https://twitter.com/phaneendrak).
-> See the roadmap below or follow my log
+> This app is a work in progress. I'm building this in public. You can follow the progress on my (log file)[LOG.md].
+> See the roadmap below or follow my (log)[LOG.md]
 
 ## About this project
 
@@ -49,15 +49,6 @@ This platform is specific for one cycling club and enables to manage various clu
 > **Warning** > **Expect some performance hits when testing the dashboard**.
 > If you see something broken, you can raise an Issue .
 
-## Roadmap
-
-- [x] ~Add MDX support for basic pages~
-- [x] ~Build marketing pages~
-- [x] ~Payments using Stripe or Razor Pay~
-- [x] ~Responsive styles~
-- [x] ~Add OG image for blog using @vercel/og~
-- [x] Dark mode
-
 ## Technical Features
 
 - New `/app` dir,
@@ -85,6 +76,8 @@ A list of things not working right now:
 1. ~Authentication (use email)~
 2. ~[Next.js 13: Client side navigation does not update head](https://github.com/vercel/next.js/issues/42414)~
 3. [Cannot use opengraph-image.tsx inside catch-all routes](https://github.com/vercel/next.js/issues/48162)
+4. All color variables from radix are included using windy-radix-pallete make it to use only specific pallete
+5. Fix warning displayed using duration arbitary utility class
 
 ## Why not tRPC, Turborepo or X?
 
