@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -10,13 +10,18 @@
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "downlevelIteration": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
+      "@/*": ["./src/*"],
+      "@/types": ["./types/index.d.ts"],
+      "@/types/*": ["./types/*"],
+      "@/convex/*": ["./convex/*"],
+      "@/env.mjs": ["./env.mjs"],
       "contentlayer/generated": ["./.contentlayer/generated"],
     },
     "plugins": [
@@ -28,16 +33,11 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "types/**/*.ts",
     ".next/types/**/*.ts",
     ".contentlayer/generated",
   ],
-  "exclude": [
-    "node_modules",
-    "./node_modules",
-    "./node_modules/*",
-    "./node_modules/@types/node/index.d.ts",
-    "./convex/_generated",
-  ],
+  "exclude": ["node_modules", "./node_modules", "./node_modules/*"],
 }

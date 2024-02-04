@@ -4,7 +4,7 @@ description: Custom styled, cross-browser scrollable area using native functiona
 # sourcePath: components/elements/scroll-area
 ---
 
-{<ComponentExample>
+{<ComponentExample scroll={false}>
 
   <ScrollArea type="always" scrollbars="both" className="h-[180px]">
     <Box className="p-2 pr-8 w-max">
@@ -84,7 +84,7 @@ This component inherits props from the Radix [ScrollArea.Root](/primitives/docs/
 
 Use the `size` prop to control the size of the scrollbar handles.
 
-{<ComponentExample>
+{<ComponentExample scroll={false}>
 
   <Flex direction="column" gap="2">
     <ScrollArea
@@ -152,7 +152,7 @@ Use the `size` prop to control the size of the scrollbar handles.
 
 Use the `radius` prop to assign a specific radius to the handles, ignoring the global theme.
 
-{<ComponentExample>
+{<ComponentExample scroll={false}>
 
 <Flex direction="column" gap="3">
   <ScrollArea
@@ -257,7 +257,7 @@ Use the `radius` prop to assign a specific radius to the handles, ignoring the g
 
 Use the `scrollbars` prop to limit scrollable axes.
 
-{<ComponentExample>
+{<ComponentExample scroll={false}>
 
   <Flex columns="2" gap="2">
     <ScrollArea type="always" scrollbars="vertical" style={{ height: 150 }}>

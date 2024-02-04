@@ -1,8 +1,30 @@
-import { User } from "@prisma/client";
 import type { Icon } from "lucide-react";
 
 import { Icons } from "@/components/icons";
 
+export type Post = {
+  id: string;
+  title: string;
+  content: string;
+  published: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+  authorId: string;
+};
+
+export type User = {
+  id: string;
+  name: string | null;
+  email: string | null;
+  emailVerified: Date | null;
+  image: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+  stripeCustomerId: string | null;
+  stripeSubscriptionId: string | null;
+  stripePriceId: string | null;
+  stripeCurrentPeriodEnd: Date | null;
+};
 export interface NavItem {
   title: string;
   href: string;
