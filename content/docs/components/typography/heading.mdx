@@ -18,6 +18,14 @@ This component is based on the `h1` element and supports [common margin props](/
 
 Use the `as` prop to change the heading level. This prop is purely semantic and does not change the visual appearance.
 
+{<ComponentExample>
+
+<Heading as="h1">Level 1</Heading>
+<Heading as="h2">Level 2</Heading>
+<Heading as="h3">Level 3</Heading>
+
+</ComponentExample>}
+
 ```jsx live=true
 <Heading as="h1">Level 1</Heading>
 <Heading as="h2">Level 2</Heading>
@@ -30,30 +38,46 @@ Use the `size` prop to control the size of the heading. The prop also provides c
 
 {
 
-<Callout.Root my="5" highContrast>
-  <Callout.Icon>
-    <InfoCircledIcon />
-  </Callout.Icon>
-  <Callout.Text>
+<CalloutRoot>
+  <CalloutIcon>
+    <Icons.info />
+  </CalloutIcon>
+  <CalloutText>
     Heading sizes match <a href="/themes/components/text">Text</a> sizes.
     However, the line heights are set a bit tighter as headings tend to be
     shorter than running text.
-  </Callout.Text>
-</Callout.Root>
+  </CalloutText>
+</CalloutRoot>
 
 }
 
+{<ComponentExample>
+
+<Flex direction="column" gap="3">
+  <Heading size="xs">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="sm">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="base">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="lg">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="xl">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="2xl">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="3xl">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="4xl">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="5xl">The quick brown fox jumps over the lazy dog</Heading>
+</Flex>
+
+</ComponentExample>}
+
 ```jsx live=true scroll=true
 <Flex direction="column" gap="3">
-  <Heading size="1">The quick brown fox jumps over the lazy dog</Heading>
-  <Heading size="2">The quick brown fox jumps over the lazy dog</Heading>
-  <Heading size="3">The quick brown fox jumps over the lazy dog</Heading>
-  <Heading size="4">The quick brown fox jumps over the lazy dog</Heading>
-  <Heading size="5">The quick brown fox jumps over the lazy dog</Heading>
-  <Heading size="6">The quick brown fox jumps over the lazy dog</Heading>
-  <Heading size="7">The quick brown fox jumps over the lazy dog</Heading>
-  <Heading size="8">The quick brown fox jumps over the lazy dog</Heading>
-  <Heading size="9">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="xs">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="sm">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="base">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="lg">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="xl">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="2xl">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="3xl">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="4xl">The quick brown fox jumps over the lazy dog</Heading>
+  <Heading size="5xl">The quick brown fox jumps over the lazy dog</Heading>
 </Flex>
 ```
 
@@ -61,86 +85,27 @@ Use the `size` prop to control the size of the heading. The prop also provides c
 
 Use the `align` prop to set text alignment.
 
-```jsx live=true
-<Heading align="left">Left-aligned</Text>
-<Heading align="center">Center-aligned</Text>
-<Heading align="right">Right-aligned</Text>
-```
+{<ComponentExample>
 
-### Trim
+<Heading align="left">Left-aligned</Heading>
+<Heading align="center">Center-aligned</Heading>
+<Heading align="right">Right-aligned</Heading>
 
-Use the `trim` prop to trim the leading space at the start, end, or both sides of the text box.
-
-The prop works similarly to the upcoming [half-leading control](https://www.w3.org/TR/css-inline-3/#leading-trim) spec, but uses a common [negative margin workaround](https://seek-oss.github.io/capsize/) under the hood for cross-browser support.
+</ComponentExample>}
 
 ```jsx live=true
-<Flex direction="column" gap="3">
-  <Heading
-    trim="normal"
-    style={{
-      background: "var(--gray-a2)",
-      borderTop: "1px dashed var(--gray-a7)",
-      borderBottom: "1px dashed var(--gray-a7)",
-    }}
-  >
-    Without trim
-  </Heading>
-  <Heading
-    trim="both"
-    style={{
-      background: "var(--gray-a2)",
-      borderTop: "1px dashed var(--gray-a7)",
-      borderBottom: "1px dashed var(--gray-a7)",
-    }}
-  >
-    With trim
-  </Heading>
-</Flex>
-```
-
-Trimming the leading is useful when dialing in vertical spacing in cards or other “boxy” components. Otherwise, padding looks larger on top and bottom than on the sides.
-
-```jsx live=true
-<Flex direction="column" gap="3">
-  <Box
-    style={{
-      background: "var(--gray-a2)",
-      border: "1px dashed var(--gray-a7)",
-    }}
-    p="4"
-  >
-    <Heading mb="1" size="3">
-      Without trim
-    </Heading>
-    <Text>
-      The goal of typography is to relate font size, line height, and line width
-      in a proportional way that maximizes beauty and makes reading easier and
-      more pleasant.
-    </Text>
-  </Box>
-
-  <Box
-    p="4"
-    style={{
-      background: "var(--gray-a2)",
-      border: "1px dashed var(--gray-a7)",
-    }}
-  >
-    <Heading mb="1" size="3" trim="start">
-      With trim
-    </Heading>
-    <Text trim="end">
-      The goal of typography is to relate font size, line height, and line width
-      in a proportional way that maximizes beauty and makes reading easier and
-      more pleasant.
-    </Text>
-  </Box>
-</Flex>
+<Heading align="left">Left-aligned</Heading>
+<Heading align="center">Center-aligned</Heading>
+<Heading align="right">Right-aligned</Heading>
 ```
 
 ### Color
 
 Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ignoring the global theme. The text colors are designed to achieve at least Lc 60 APCA contrast over common background colors.
+
+{<ComponentExample>
+
+</ComponentExample>}
 
 ```jsx live=true scroll=true
 <Flex direction="column">
@@ -148,26 +113,5 @@ Use the `color` prop to assign a specific [color](/themes/docs/theme/color), ign
   <Heading color="cyan">The quick brown fox jumps over the lazy dog</Heading>
   <Heading color="orange">The quick brown fox jumps over the lazy dog</Heading>
   <Heading color="crimson">The quick brown fox jumps over the lazy dog</Heading>
-</Flex>
-```
-
-### High-contrast
-
-Use the `highContrast` prop to increase color contrast with the background.
-
-```jsx live="true"
-<Flex direction="column">
-  <Heading highContrast color="indigo">
-    The quick brown fox jumps over the lazy dog.
-  </Heading>
-  <Heading highContrast color="cyan">
-    The quick brown fox jumps over the lazy dog.
-  </Heading>
-  <Heading highContrast color="orange">
-    The quick brown fox jumps over the lazy dog.
-  </Heading>
-  <Heading highContrast color="crimson">
-    The quick brown fox jumps over the lazy dog.
-  </Heading>
 </Flex>
 ```

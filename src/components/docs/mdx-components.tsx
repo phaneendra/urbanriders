@@ -1,10 +1,14 @@
 import * as React from "react";
 import Image from "next/image";
+import NextLink from "next/link";
 import { useMDXComponent } from "next-contentlayer/hooks";
 
 import { cn } from "@/lib/utils";
+import { Code } from "@/components/ui/typography/Code";
+import { Heading } from "@/components/ui/typography/Heading";
+import { Link } from "@/components/ui/typography/Link";
 import { Text } from "@/components/ui/typography/Text";
-import { Callout } from "@/components/callout";
+import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentExample } from "@/components/docs/component-example";
 import { DecorativeBox } from "@/components/docs/DecorativeBox";
 import { MdxCard } from "@/components/docs/mdx-card";
@@ -15,80 +19,82 @@ const components = {
   ...uicomponents,
   Icons,
   h1: ({ className, ...props }) => (
-    <h1
-      className={cn(
-        "mt-2 scroll-m-20 text-4xl font-bold tracking-tight",
-        className
-      )}
-      {...props}
-    />
+    <Heading asChild size="5xl" className="mb-3 scroll-mt-9">
+      <h1 {...props}></h1>
+    </Heading>
   ),
-  h2: ({ className, ...props }) => (
-    <h2
-      className={cn(
-        "mt-10 scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0",
-        className
-      )}
-      {...props}
-    />
+  h2: ({ className, id, children, ...props }) => (
+    <Heading asChild size="4xl" className="mb-2 mt-7 scroll-mt-9">
+      <h2 {...props}>
+        <Link
+          id={id}
+          href={`#${id}`}
+          underline="hover"
+          className={cn("text-fg inline-flex items-center gap-2", className)}
+        >
+          {children}
+          <Icons.link aria-hidden className="size-4" />
+        </Link>
+      </h2>
+    </Heading>
   ),
-  h3: ({ className, ...props }) => (
-    <h3
-      className={cn(
-        "mt-8 scroll-m-20 text-2xl font-semibold tracking-tight",
-        className
-      )}
-      {...props}
-    />
+  h3: ({ className, id, children, ...props }) => (
+    <Heading asChild size="3xl" className="mb-2 mt-7 scroll-mt-9">
+      <h3 {...props}>
+        <Link
+          id={id}
+          href={`#${id}`}
+          underline="hover"
+          className={cn("text-fg inline-flex items-center gap-2", className)}
+        >
+          {children}
+          <Icons.link aria-hidden className="size-4" />
+        </Link>
+      </h3>
+    </Heading>
   ),
-  h4: ({ className, ...props }) => (
-    <h4
-      className={cn(
-        "mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
-        className
-      )}
-      {...props}
-    />
+  h4: ({ className, children, id, ...props }) => (
+    <Heading asChild size="2xl" className="mb-3 mt-6 scroll-mt-9">
+      <h4 {...props}>{children}</h4>
+    </Heading>
   ),
-  h5: ({ className, ...props }) => (
-    <h5
-      className={cn(
-        "mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
-        className
-      )}
-      {...props}
-    />
+  h5: ({ className, id, children, ...props }) => (
+    <Heading asChild size="xl" className="mb-3 mt-6 scroll-mt-9">
+      <h5 {...props}>{children}</h5>
+    </Heading>
   ),
-  h6: ({ className, ...props }) => (
-    <h6
-      className={cn(
-        "mt-8 scroll-m-20 text-base font-semibold tracking-tight",
-        className
-      )}
-      {...props}
-    />
+  h6: ({ className, id, children, ...props }) => (
+    <Heading asChild size="lg" className="mb-3 mt-6 scroll-mt-9">
+      <h4 {...props}>{children}</h4>
+    </Heading>
   ),
-  a: ({ className, ...props }) => (
-    <a
-      className={cn("font-medium underline underline-offset-4", className)}
-      {...props}
-    />
-  ),
+  a: ({ className, href, children, ...props }) => {
+    if (href.startsWith("http")) {
+      return (
+        <Link {...props} asChild>
+          <a href={href} target="_blank" rel="noopener"></a>
+        </Link>
+      );
+    }
+    return (
+      <Link {...props} asChild>
+        <NextLink href={href}>{children}</NextLink>
+      </Link>
+    );
+  },
   p: ({ className, ...props }) => (
-    <p
-      className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
-      {...props}
-    />
+    <Text as="p" size="base" className="mb-3" {...props} />
   ),
   ul: ({ className, ...props }) => (
-    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
+    <ul
+      className={cn("list-circle mb-3 flex flex-col gap-2 pl-4", className)}
+      {...props}
+    />
   ),
   ol: ({ className, ...props }) => (
-    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
+    <ol className={cn("mb-3 list-decimal pl-4", className)} {...props} />
   ),
-  li: ({ className, ...props }) => (
-    <li className={cn("mt-2", className)} {...props} />
-  ),
+  li: ({ className, ...props }) => <li className={cn(className)} {...props} />,
   blockquote: ({ className, ...props }) => (
     <blockquote
       className={cn(
@@ -137,28 +143,32 @@ const components = {
     />
   ),
   pre: ({ className, ...props }) => (
-    <pre
-      className={cn(
-        "mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4",
-        className
-      )}
-      {...props}
-    />
+    <CodeBlock className={cn(className)} {...props} />
   ),
-  code: ({ className, ...props }) => (
-    <code
-      className={cn(
-        "relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm",
-        className
-      )}
-      {...props}
-    />
-  ),
+  code: ({ className, ...props }) => {
+    // if it's a codeblock (``` block in markdown), it'll have a data-theme from rehype
+    const isInlineCode = !props["data-theme"];
+    return isInlineCode ? (
+      <Code className={className} {...props} />
+    ) : (
+      <code
+        className={cn(
+          "text-fg grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm",
+          className
+        )}
+        {...props}
+      />
+    );
+
+    // <code
+    //   className={cn("relative font-mono text-sm leading-snug", className)}
+    //   {...props}
+    // />
+  },
   Image: (props: React.ComponentProps<typeof Image>) => (
     <Image {...props} alt={props.alt} />
   ),
   DecorativeBox,
-  Callout,
   ComponentExample,
   Card: MdxCard,
 };

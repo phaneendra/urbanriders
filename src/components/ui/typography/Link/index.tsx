@@ -7,11 +7,10 @@ import { usePropId } from "@/hooks/use-prop-id";
 
 import { linkStyles } from "./link-styles";
 
-export interface LinkProps
-  extends React.HTMLAttributes<HTMLAnchorElement>,
-    VariantProps<typeof linkStyles> {
+export type LinkProps = {
   asChild?: boolean;
-}
+} & React.AnchorHTMLAttributes<HTMLAnchorElement> &
+  VariantProps<typeof linkStyles>;
 
 export type LinkElement = React.ElementRef<"a">;
 

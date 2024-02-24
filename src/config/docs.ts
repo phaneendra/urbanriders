@@ -13,7 +13,7 @@ export const docsConfig: MenuConfig = {
   ],
   sidebarNav: [
     {
-      title: "Getting Started",
+      title: "Introduction",
       href: "/docs",
       items: [
         {
@@ -28,8 +28,8 @@ export const docsConfig: MenuConfig = {
       href: "/docs/documentation",
       items: [
         {
-          title: "Introduction",
-          href: "/docs/documentation",
+          title: "Getting Started",
+          href: "/docs/overview",
           items: [],
         },
         {
@@ -40,17 +40,17 @@ export const docsConfig: MenuConfig = {
         },
         {
           title: "Components",
-          href: "/docs/documentation/components",
+          href: "/docs/overview/components",
           items: [],
         },
         {
           title: "Code Blocks",
-          href: "/docs/documentation/code-blocks",
+          href: "/docs/overview/code-blocks",
           items: [],
         },
         {
           title: "Style Guide",
-          href: "/docs/documentation/style-guide",
+          href: "/docs/overview/style-guide",
           items: [],
         },
         {

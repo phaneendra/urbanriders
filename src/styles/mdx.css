@@ -1,29 +1,44 @@
-[data-rehype-pretty-code-fragment] code {
-  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-black;
+code[data-theme*=" "] {
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-fg;
   counter-reset: line;
   box-decoration-break: clone;
 }
-[data-rehype-pretty-code-fragment] .line {
-  @apply px-4 py-1;
+
+/* Light and dark theme for code blocks*/
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+  color: var(--shiki-light);
 }
-[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
+
+.dark code[data-theme*=" "],
+.dark code[data-theme*=" "] span {
+  color: var(--shiki-dark);
+}
+
+/* code span[data-line] {
+  @apply -ms-6 -me-6 px-6;
+} */
+
+/* Line number styles */
+code[data-line-numbers] {
+  counter-reset: line;
+}
+code[data-line-numbers] > [data-line]::before {
   counter-increment: line;
   content: counter(line);
-  display: inline-block;
-  width: 1rem;
-  margin-right: 1rem;
-  text-align: right;
-  color: gray;
+  @apply inline-block w-4 mr-4 text-right text-fgsubtle;
 }
-[data-rehype-pretty-code-fragment] .line--highlighted {
-  @apply bg-slate-300 bg-opacity-10;
+
+/* Line highlight styles */
+code span[data-highlighted-line] {
+  @apply bg-uisoft;
 }
-[data-rehype-pretty-code-fragment] .line-highlighted span {
-  @apply relative;
+
+/* Word highlighted styles */
+[data-highlighted-chars] {
+  @apply rounded-sm bg-uisoft px-1;
 }
-[data-rehype-pretty-code-fragment] .word--highlighted {
-  @apply rounded-md bg-slate-300 bg-opacity-10 p-1;
-}
+
 [data-rehype-pretty-code-title] {
   @apply mt-4 py-2 px-4 text-sm font-medium;
 }

@@ -1,6 +1,7 @@
 import variablePlugin from "@mertasan/tailwindcss-variables";
-import radixColors from "@radix-ui/colors";
+import * as radixColors from "@radix-ui/colors";
 import typographyPlugin from "@tailwindcss/typography";
+import { Circle } from "lucide-react";
 import type { Config } from "tailwindcss";
 import animatePlugin from "tailwindcss-animate";
 import { fontFamily } from "tailwindcss/defaultTheme";
@@ -174,7 +175,9 @@ export const cpPreset = {
         overlay: radixColors.blackA.blackA8,
         contrast: radixColors.mauveDarkA.mauveA12,
         primary: {
+          canvas: radixColors.irisDark.iris1,
           surface: "#1d1b3980",
+          panel: radixColors.irisDark.iris2,
           ui: radixColors.irisDark.iris3,
           uihover: radixColors.irisDark.iris4,
           uiselected: radixColors.irisDark.iris5,
@@ -195,7 +198,9 @@ export const cpPreset = {
           contrast: radixColors.whiteA.whiteA12,
         },
         secondary: {
+          canvas: radixColors.blueDark.blue1,
           surface: "#11213d80",
+          panel: radixColors.blueDark.blue2,
           ui: radixColors.blueDark.blue3,
           uihover: radixColors.blueDark.blue4,
           uiselected: radixColors.blueDark.blue5,
@@ -216,7 +221,9 @@ export const cpPreset = {
           contrast: radixColors.whiteA.whiteA12,
         },
         destructive: {
+          canvas: radixColors.redDark.red1,
           surface: "#2f151780",
+          panel: radixColors.redDark.red2,
           ui: radixColors.redDark.red3,
           uihover: radixColors.redDark.red4,
           uiselected: radixColors.redDark.red5,
@@ -237,7 +244,9 @@ export const cpPreset = {
           contrast: radixColors.whiteA.whiteA12,
         },
         accent: {
+          canvas: radixColors.plumDark.plum1,
           surface: "#2f152f80",
+          panel: radixColors.plumDark.plum2,
           ui: radixColors.plumDark.plum3,
           uihover: radixColors.plumDark.plum4,
           uiselected: radixColors.plumDark.plum5,
@@ -304,6 +313,8 @@ export const cpPreset = {
         primary: {
           DEFAULT: "var(--primary-uisolid)",
           surface: "var(--primary-surface)",
+          canvas: "var(--primary-canvas)",
+          panel: "var(--primary-panel)",
           ui: "var(--primary-ui)",
           uihover: "var(--primary-uihover)",
           uiselected: "var(--primary-uiselected)",
@@ -326,6 +337,8 @@ export const cpPreset = {
         secondary: {
           DEFAULT: "var(--secondary-uisolid)",
           surface: "var(--secondary-surface)",
+          canvas: "var(--secondary-canvas)",
+          panel: "var(--secondary-panel)",
           ui: "var(--secondary-ui)",
           uihover: "var(--secondary-uihover)",
           uiselected: "var(--secondary-uiselected)",
@@ -348,6 +361,8 @@ export const cpPreset = {
         destructive: {
           DEFAULT: "var(--destructive-uisolid)",
           surface: "var(--destructive-surface)",
+          canvas: "var(--destructive-canvas)",
+          panel: "var(--destructive-panel)",
           ui: "var(--destructive-ui)",
           uihover: "var(--destructive-uihover)",
           uiselected: "var(--destructive-uiselected)",
@@ -370,6 +385,8 @@ export const cpPreset = {
         accent: {
           DEFAULT: "var(--accent-uisolid)",
           surface: "var(--accent-surface)",
+          canvas: "var(--accent-canvas)",
+          panel: "var(--accent-panel)",
           ui: "var(--accent-ui)",
           uihover: "var(--accent-uihover)",
           uiselected: "var(--accent-uiselected)",
@@ -546,17 +563,17 @@ export const cpPreset = {
       },
       lineHeight: {
         1: "calc(16px * var(--scaling))",
-        "leading-none": "calc(16px * var(--scaling))",
+        none: "calc(16px * var(--scaling))",
         2: "calc(20px * var(--scaling))",
-        "leading-tight": "calc(20px * var(--scaling))",
-        "leading-snug": "calc(22px * var(--scaling))",
+        tight: "calc(20px * var(--scaling))",
+        snug: "calc(22px * var(--scaling))",
         3: "calc(24px * var(--scaling))",
-        "leading-normal": "calc(24px * var(--scaling))",
+        normal: "calc(24px * var(--scaling))",
         4: "calc(26px * var(--scaling))",
-        "leading-relaxed": "calc(26px * var(--scaling))",
+        relaxed: "calc(26px * var(--scaling))",
         5: "calc(28px * var(--scaling))",
         6: "calc(30px * var(--scaling))",
-        "leading-loose": "calc(32px * var(--scaling))",
+        loose: "calc(32px * var(--scaling))",
         7: "calc(36px * var(--scaling))",
         8: "calc(40px * var(--scaling))",
         9: "calc(60px * var(--scaling))",
@@ -707,6 +724,9 @@ export const cpPreset = {
       backgroundImage: {
         "hero-pattern-diagonal-lines":
           "url(\"data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E\");",
+      },
+      listStyleType: {
+        circle: "circle",
       },
       keyframes: {
         "accordion-down": {

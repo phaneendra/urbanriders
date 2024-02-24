@@ -24,8 +24,8 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
             intent,
             align,
             radius,
-            className,
-          })
+          }),
+          [className]
         )}
         ref={ref}
         {...props}

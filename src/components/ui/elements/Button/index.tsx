@@ -24,8 +24,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             intent,
             align,
             radius,
-            className,
-          })
+          }),
+          [className]
         )}
         ref={ref}
         {...props}

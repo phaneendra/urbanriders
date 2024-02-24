@@ -1,4 +1,7 @@
-import { Space_Grotesk as FontSans } from "next/font/google";
+import {
+  Source_Code_Pro as FontMono,
+  Public_Sans as FontSans,
+} from "next/font/google";
 import localFont from "next/font/local";
 
 import "@/styles/globals.css";
@@ -17,9 +20,14 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
+const fontMono = FontMono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
+
 // Font files can be colocated inside of `pages`
 const fontHeading = localFont({
-  src: "../assets/fonts/GOOD-BRUSH.woff2",
+  src: "../assets/fonts/AdobeTextPro-Regular.woff",
   variable: "--font-heading",
 });
 
@@ -90,6 +98,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={cn(
           "bg-canvas min-h-screen font-sans antialiased",
+          fontMono.variable,
           fontSans.variable,
           fontHeading.variable
         )}
