@@ -1,7 +1,6 @@
 import variablePlugin from "@mertasan/tailwindcss-variables";
 import * as radixColors from "@radix-ui/colors";
 import typographyPlugin from "@tailwindcss/typography";
-import { Circle } from "lucide-react";
 import type { Config } from "tailwindcss";
 import animatePlugin from "tailwindcss-animate";
 import { fontFamily } from "tailwindcss/defaultTheme";

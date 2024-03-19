@@ -14,11 +14,11 @@ export default async function DashboardLayout({
   children,
 }: DashboardLayoutProps) {
   // const user = await getCurrentUser();
-  const user = null;
+  // const user = null;
 
-  if (!user) {
-    return notFound();
-  }
+  // if (!user) {
+  //   return notFound();
+  // }
 
   return (
     <div className="flex min-h-screen flex-col space-y-6">

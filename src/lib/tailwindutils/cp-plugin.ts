@@ -55,7 +55,7 @@ export const cpPlugin = plugin(
         "@apply border-border": {},
       },
       body: {
-        "@apply bg-canvas text-fg": {},
+        "@apply bg-canvas text-fg min-h-screen font-sans antialiased": {},
         fontFeatureSettings: '"rlig" 1,"calt" 1',
       },
     });

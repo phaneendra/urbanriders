@@ -13,6 +13,11 @@ const nextConfig = {
       },
     ],
   },
+  webpack: (config) => {
+    // mark oslo dependencies as external to prevent it from being bundled.
+    config.externals.push("@node-rs/argon2", "@node-rs/bcrypt");
+    return config;
+  },
 };
 
 const withContentlayer = createContentlayerPlugin({
