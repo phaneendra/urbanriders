@@ -2,11 +2,11 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { api } from "@/convex/_generated/api";
+// import { api } from "@/convex/_generated/api";
 // import { useSignIn } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
 // import { useMutation } from "@/hooks/use-mutation";
-import { useMutation } from "convex/react";
+// import { useMutation } from "convex/react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import type { z } from "zod";
@@ -24,14 +24,15 @@ import {
 import { Input } from "@/components/ui/forms/Input";
 import { PasswordInput } from "@/components/ui/password-input";
 import { Icons } from "@/components/icons";
-import { useSessionContextUpdater } from "@/components/providers/SessionProvider";
+
+// import { useSessionContextUpdater } from "@/components/providers/SessionProvider";
 
 type Inputs = z.infer<typeof emailAuthSchema>;
 
 export function SignInForm() {
   const router = useRouter();
-  const updateSessionId = useSessionContextUpdater().updateSessionId;
-  const signIn = useMutation(api.auth.email.signIn);
+  // const updateSessionId = useSessionContextUpdater().updateSessionId;
+  // const signIn = useMutation(api.auth.email.signIn);
   // const { isLoaded, signIn, setActive } = useSignIn();
   const [isPending, startTransition] = React.useTransition();
 
@@ -47,12 +48,12 @@ export function SignInForm() {
   const onSubmit = (data: Inputs) => {
     startTransition(async () => {
       try {
-        const sessionId = await signIn({
-          email: "",
-          password: data.password,
-          sessionId: null,
-        });
-        updateSessionId(sessionId);
+        // const sessionId = await signIn({
+        //   email: "",
+        //   password: data.password,
+        //   sessionId: null,
+        // });
+        // updateSessionId(sessionId);
 
         router.push(`${window.location.origin}/`);
       } catch (err) {

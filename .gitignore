@@ -8,10 +8,6 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
-
 # production
 /build
 
@@ -28,6 +24,11 @@ yarn-error.log*
 # local env files
 .env*.local
 .env
+.dev.vars
+
+# next.js
+/.next/
+/out/
 
 # vercel
 .vercel
@@ -36,6 +37,14 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Vscode
 .vscode
+
+# Contentlayer
 .contentlayer
+
+# Drizzle ORM
 drizzle
+
+# Cloudflare
+.wrangler

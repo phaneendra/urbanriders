@@ -4,6 +4,7 @@
   "extends": [
     "next/core-web-vitals",
     "prettier",
+    "plugin:eslint-plugin-next-on-pages/recommended",
     "plugin:tailwindcss/recommended"
   ],
   "plugins": ["tailwindcss", "eslint-plugin-next-on-pages"],

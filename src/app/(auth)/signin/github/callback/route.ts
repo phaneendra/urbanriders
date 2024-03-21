@@ -1,9 +1,12 @@
 import { cookies } from "next/headers";
 import { OAuth2RequestError } from "arctic";
-import { generateId } from "lucia";
 
-import { github, lucia } from "@/lib/auth";
-import type { DatabaseUser } from "@/lib/db";
+// import { generateId } from "lucia";
+
+// import { github, lucia } from "@/lib/auth";
+// import type { DatabaseUser } from "@/lib/db";
+
+export const runtime = "edge";
 
 export async function GET(request: Request): Promise<Response> {
   const url = new URL(request.url);
@@ -17,44 +20,44 @@ export async function GET(request: Request): Promise<Response> {
   }
 
   try {
-    const tokens = await github.validateAuthorizationCode(code);
-    const githubUserResponse = await fetch("https://api.github.com/user", {
-      headers: {
-        Authorization: `Bearer ${tokens.accessToken}`,
-      },
-    });
-    const githubUser: GitHubUser = await githubUserResponse.json();
-    const existingUser = db
-      .prepare("SELECT * FROM user WHERE github_id = ?")
-      .get(githubUser.id) as DatabaseUser | undefined;
+    // const tokens = await github.validateAuthorizationCode(code);
+    // const githubUserResponse = await fetch("https://api.github.com/user", {
+    //   headers: {
+    //     Authorization: `Bearer ${tokens.accessToken}`,
+    //   },
+    // });
+    // const githubUser: GitHubUser = await githubUserResponse.json();
+    // const existingUser = db
+    //   .prepare("SELECT * FROM user WHERE github_id = ?")
+    //   .get(githubUser.id) as DatabaseUser | undefined;
 
-    if (existingUser) {
-      const session = await lucia.createSession(existingUser.id, {});
-      const sessionCookie = lucia.createSessionCookie(session.id);
-      cookies().set(
-        sessionCookie.name,
-        sessionCookie.value,
-        sessionCookie.attributes
-      );
-      return new Response(null, {
-        status: 302,
-        headers: {
-          Location: "/",
-        },
-      });
-    }
+    // if (existingUser) {
+    //   const session = await lucia.createSession(existingUser.id, {});
+    //   const sessionCookie = lucia.createSessionCookie(session.id);
+    //   cookies().set(
+    //     sessionCookie.name,
+    //     sessionCookie.value,
+    //     sessionCookie.attributes
+    //   );
+    //   return new Response(null, {
+    //     status: 302,
+    //     headers: {
+    //       Location: "/",
+    //     },
+    //   });
+    // }
 
-    const userId = generateId(15);
-    db.prepare(
-      "INSERT INTO user (id, github_id, username) VALUES (?, ?, ?)"
-    ).run(userId, githubUser.id, githubUser.login);
-    const session = await lucia.createSession(userId, {});
-    const sessionCookie = lucia.createSessionCookie(session.id);
-    cookies().set(
-      sessionCookie.name,
-      sessionCookie.value,
-      sessionCookie.attributes
-    );
+    // const userId = generateId(15);
+    // db.prepare(
+    //   "INSERT INTO user (id, github_id, username) VALUES (?, ?, ?)"
+    // ).run(userId, githubUser.id, githubUser.login);
+    // const session = await lucia.createSession(userId, {});
+    // const sessionCookie = lucia.createSessionCookie(session.id);
+    // cookies().set(
+    //   sessionCookie.name,
+    //   sessionCookie.value,
+    //   sessionCookie.attributes
+    // );
     return new Response(null, {
       status: 302,
       headers: {
@@ -77,7 +80,7 @@ export async function GET(request: Request): Promise<Response> {
   }
 }
 
-interface GitHubUser {
-  id: string;
-  login: string;
-}
+// interface GitHubUser {
+//   id: string;
+//   login: string;
+// }

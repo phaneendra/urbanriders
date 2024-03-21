@@ -9,9 +9,7 @@ import "@/styles/globals.css";
 import { siteConfig } from "@/config/site";
 import { absoluteUrl, cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonnar";
-import { Analytics } from "@/components/analytics";
-import ConvexClientProvider from "@/components/providers/ConvexClientProvider";
-import { SessionProvider } from "@/components/providers/SessionProvider";
+// import { SessionProvider } from "@/components/providers/SessionProvider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 
@@ -34,6 +32,8 @@ const fontHeading = localFont({
 interface RootLayoutProps {
   children: React.ReactNode;
 }
+
+// export const runtime = "edge";
 
 export const viewport = {
   themeColor: [
@@ -103,16 +103,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
           fontHeading.variable
         )}
       >
-        <SessionProvider>
-          <ConvexClientProvider>
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-              {children}
-              <Analytics />
-              <Toaster />
-              <TailwindIndicator />
-            </ThemeProvider>
-          </ConvexClientProvider>
-        </SessionProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+          <Toaster />
+          <TailwindIndicator />
+        </ThemeProvider>
       </body>
     </html>
   );
