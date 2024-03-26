@@ -20,9 +20,7 @@
       "@/*": ["./src/*"],
       "@/types": ["./types/index.d.ts"],
       "@/types/*": ["./types/*"],
-      "@/convex/*": ["./convex/*"],
       "@/env.mjs": ["./env.mjs"],
-      "contentlayer/generated": ["./.contentlayer/generated"],
     },
     "plugins": [
       {
@@ -37,7 +35,7 @@
     "src/**/*.tsx",
     "types/**/*.ts",
     ".next/types/**/*.ts",
-    ".contentlayer/generated",
+    "src/lib/utils/cloudflare-image-loader.js",
   ],
   "exclude": ["node_modules", "./node_modules", "./node_modules/*"],
 }

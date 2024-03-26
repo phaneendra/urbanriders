@@ -21,6 +21,7 @@ export const headingStyles = cva("box-border font-heading", {
       "3xl": "text-2xl xs:text-3xl font-heading", // h3
       "4xl": "text-3xl xs:text-4xl font-heading", // h2
       "5xl": "text-4xl xs:text-5xl font-heading", // h1
+      "6xl": "text-5xl xs:text-6xl font-heading", // display
     },
     weight: {
       light: "font-light",

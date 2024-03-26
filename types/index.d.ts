@@ -51,6 +51,10 @@ export type SiteConfig = {
   links: {
     twitter: string;
     github: string;
+    instagram: string;
+    facebook: string;
+    discord: string;
+    strava: string;
   };
   authors: {
     name: string;

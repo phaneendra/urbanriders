@@ -1,6 +1,6 @@
 import plugin from "tailwindcss/plugin";
 
-export const cpPlugin = plugin(
+export const uiPlugin = plugin(
   // Add css variables to baselayer
   function ({ addBase }) {
     addBase({

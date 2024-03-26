@@ -7,16 +7,20 @@ export const marketingConfig: MenuConfig = {
       href: "/#features",
     },
     {
-      title: "Pricing",
-      href: "/pricing",
+      title: "Posts",
+      href: "/posts",
     },
     {
-      title: "Blog",
-      href: "/blog",
+      title: "Events",
+      href: "/events",
     },
     {
-      title: "Documentation",
-      href: "/docs",
+      title: "Challenges",
+      href: "/challenges",
+    },
+    {
+      title: "Marketplace",
+      href: "/marketplace",
     },
   ],
   sidebarNav: [
@@ -26,18 +30,23 @@ export const marketingConfig: MenuConfig = {
       items: [],
     },
     {
-      title: "Pricing",
-      href: "/pricing",
+      title: "Posts",
+      href: "/posts",
       items: [],
     },
     {
-      title: "Blog",
-      href: "/blog",
+      title: "Events",
+      href: "/events",
       items: [],
     },
     {
-      title: "Documentation",
-      href: "/docs",
+      title: "Challenges",
+      href: "/challenges",
+      items: [],
+    },
+    {
+      title: "Marketplace",
+      href: "/marketplace",
       items: [],
     },
   ],

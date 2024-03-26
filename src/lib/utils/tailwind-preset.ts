@@ -5,12 +5,12 @@ import type { Config } from "tailwindcss";
 import animatePlugin from "tailwindcss-animate";
 import { fontFamily } from "tailwindcss/defaultTheme";
 
-import { cpPlugin } from "./cp-plugin";
+import { uiPlugin } from "./tailwind-plugin";
 
-export const cpPreset = {
+export const uiPreset = {
   content: [],
   darkMode: ["class"],
-  plugins: [variablePlugin, cpPlugin, animatePlugin, typographyPlugin],
+  plugins: [variablePlugin, uiPlugin, animatePlugin, typographyPlugin],
   theme: {
     container: {
       center: true,
@@ -269,15 +269,15 @@ export const cpPreset = {
     },
     extend: {
       screens: {
-        sm: "520px",
+        xs: "520px",
         // => @media (min-width: 520px) { ... }
-        md: "768px",
+        sm: "768px",
         // => @media (min-width: 768px) { ... }
-        lg: "1024px",
+        md: "1024px",
         // => @media (min-width: 1024px) { ... }
-        xl: "1280px",
+        lg: "1280px",
         // => @media (min-width: 1280px) { ... }
-        "2xl": "1640px",
+        xl: "1640px",
         // => @media (min-width: 1640px) { ... }
       },
       colors: {

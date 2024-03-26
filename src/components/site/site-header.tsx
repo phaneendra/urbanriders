@@ -31,7 +31,7 @@ export function SiteHeader(props: SiteHeaderProps) {
   }, []);
 
   const classes = cn(
-    "shadow-border-b sticky top-0 z-50 w-full",
+    "shadow-border-b fixed top-0 z-50 w-full",
     scrollState == "at-top"
       ? "bg-transparent shadow-transparent transition-[border-color,box-shadow] duration-[180ms]"
       : "bg-canvas shadow-border"
@@ -39,7 +39,7 @@ export function SiteHeader(props: SiteHeaderProps) {
 
   return (
     <header className={classes}>
-      <div className="container flex h-14 items-center justify-between">
+      <div className="container flex h-16 items-center justify-between">
         {children}
       </div>
     </header>

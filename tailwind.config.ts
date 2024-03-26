@@ -1,9 +1,9 @@
 import type { Config } from "tailwindcss";
 
-import { cpPreset } from "./src/lib/tailwindutils/cp-preset";
+import { uiPreset } from "./src/lib/utils/tailwind-preset";
 
 const config = {
-  presets: [cpPreset],
+  presets: [uiPreset],
   content: [
     "./src/app/**/*.{ts,tsx}",
     "./src/components/**/*.{ts,tsx}",

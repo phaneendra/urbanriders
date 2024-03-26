@@ -1,167 +1,298 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { env } from "@/env.mjs";
 import { siteConfig } from "@/config/site";
 import { NavLink } from "@/components/ui/navigation/NavLinks";
-
-async function getGitHubStars(): Promise<string | null> {
-  try {
-    const response = await fetch(
-      "https://api.github.com/repos/phaneendra/urbanriders",
-      {
-        headers: {
-          Accept: "application/vnd.github+json",
-          Authorization: `Bearer ${env.GITHUB_ACCESS_TOKEN}`,
-        },
-        next: {
-          revalidate: 60,
-        },
-      }
-    );
-
-    if (!response?.ok) {
-      return null;
-    }
-
-    const json = await response.json();
-
-    return parseInt(json["stargazers_count"]).toLocaleString();
-  } catch (error) {
-    return null;
-  }
-}
+import { Heading } from "@/components/ui/typography/Heading";
+import { Icons } from "@/components/icons";
+import { Statistics } from "@/components/marketing/statistics";
 
 export default async function IndexPage() {
-  const stars = await getGitHubStars();
-
   return (
     <>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
-        <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
+        <div className="container flex flex-col items-center gap-4 text-center">
           <Link
-            href={siteConfig.links.twitter}
+            href={siteConfig.links.facebook}
             className="bg-ui rounded-2xl px-4 py-1.5 text-sm font-medium"
             target="_blank"
           >
-            Follow along on Twitter
+            Follow along on Facebook
           </Link>
-          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-            An example app built using Next.js 13 server components.
-          </h1>
+          <Heading size="6xl" as="h1">
+            <span className="from-primary-uisolid to-secondary-uisolid inline bg-gradient-to-r bg-clip-text text-transparent">
+              Bengaluru Cycling Club
+            </span>
+          </Heading>
+          <Heading size="5xl" as="h1">
+            Ride Recognize and Respect.
+          </Heading>
           <p className="text-fgsubtle max-w-[42rem] leading-normal sm:text-xl sm:leading-8">
-            I&apos;m building a web app with Next.js 13 and open sourcing
-            everything. Follow along as we figure this out together.
+            Join our community of cycling enthusiasts who share your passion for
+            the open road and the thrill of the ride. Whether you&apos;re a
+            seasoned pro or just starting out, we welcome all levels to come
+            pedal with us..
           </p>
-          <div className="space-x-4">
-            <NavLink asChild size="lg">
-              <Link href="/login">Get Started</Link>
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <NavLink asChild size="base" intent="primary" variant="solid">
+              <Link href="/login">Members Connect</Link>
             </NavLink>
-            <NavLink asChild size="lg" variant="outline">
+            <NavLink asChild size="base" variant="outline">
               <Link
-                href={siteConfig.links.github}
+                href={siteConfig.links.discord}
                 target="_blank"
                 rel="noreferrer"
               >
-                GitHub
+                Join Us
+                <Icons.discordCircle className="mr-2" aria-hidden="true" />
               </Link>
             </NavLink>
           </div>
         </div>
       </section>
+
+      <section id="about" className="container py-8 md:py-12 lg:py-24">
+        <div className="bg-muted/50 rounded-lg border py-12">
+          <div className="flex flex-col-reverse gap-8 px-6 md:flex-row md:gap-12">
+            <Image
+              src="/images/home/bcc_image.jpg"
+              alt="Start your cycling journey"
+              className="w-[300px] rounded-lg object-contain"
+              width="300"
+              height="300"
+            />
+            <div className="flex flex-col justify-between">
+              <div className="pb-6">
+                <Heading size="5xl" as="h2">
+                  {/* <span className="from-primary-uisolid to-primary-uisoft bg-gradient-to-b bg-clip-text text-transparent"> */}
+                  About Us {/* </span> */}
+                </Heading>
+                <p className="text-fgsubtle mt-4 leading-normal sm:text-lg sm:leading-7">
+                  Welcome to Bengaluru Cycling Club, a community where
+                  heart-pounding rides meet the warmth of friendship and the
+                  thrill of discovery. Born from a simple yet profound love for
+                  cycling, our club has grown into a vibrant tapestry of
+                  cyclists united by a shared passion for the open road.
+                </p>
+              </div>
+
+              <Statistics />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section
         id="features"
         className="bg-panel container space-y-6 py-8 md:py-12 lg:py-24 dark:bg-transparent"
       >
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            Features
+            Membership Benefits
           </h2>
           <p className="text-fgsubtle max-w-[85%] leading-normal sm:text-lg sm:leading-7">
-            This project is an experiment to see how a modern app, with features
-            like auth, payments, subscriptions, API routes, and static pages
-            would work in Next.js 14 app dir.
+            Become part of the biggest club in Bengaluru and get access to: Club
+            training rides, Coaching, Recreational rides, Road racing, Sportives
+            and Women only sessions… You&apos;ll also get some great member
+            benefits :)
           </p>
         </div>
         <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
           <div className="bg-canvas relative overflow-hidden rounded-lg border p-2">
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <svg viewBox="0 0 24 24" className="h-12 w-12 fill-current">
-                <path d="M11.572 0c-.176 0-.31.001-.358.007a19.76 19.76 0 0 1-.364.033C7.443.346 4.25 2.185 2.228 5.012a11.875 11.875 0 0 0-2.119 5.243c-.096.659-.108.854-.108 1.747s.012 1.089.108 1.748c.652 4.506 3.86 8.292 8.209 9.695.779.25 1.6.422 2.534.525.363.04 1.935.04 2.299 0 1.611-.178 2.977-.577 4.323-1.264.207-.106.247-.134.219-.158-.02-.013-.9-1.193-1.955-2.62l-1.919-2.592-2.404-3.558a338.739 338.739 0 0 0-2.422-3.556c-.009-.002-.018 1.579-.023 3.51-.007 3.38-.01 3.515-.052 3.595a.426.426 0 0 1-.206.214c-.075.037-.14.044-.495.044H7.81l-.108-.068a.438.438 0 0 1-.157-.171l-.05-.106.006-4.703.007-4.705.072-.092a.645.645 0 0 1 .174-.143c.096-.047.134-.051.54-.051.478 0 .558.018.682.154.035.038 1.337 1.999 2.895 4.361a10760.433 10760.433 0 0 0 4.735 7.17l1.9 2.879.096-.063a12.317 12.317 0 0 0 2.466-2.163 11.944 11.944 0 0 0 2.824-6.134c.096-.66.108-.854.108-1.748 0-.893-.012-1.088-.108-1.747-.652-4.506-3.859-8.292-8.208-9.695a12.597 12.597 0 0 0-2.499-.523A33.119 33.119 0 0 0 11.573 0zm4.069 7.217c.347 0 .408.005.486.047a.473.473 0 0 1 .237.277c.018.06.023 1.365.018 4.304l-.006 4.218-.744-1.14-.746-1.14v-3.066c0-1.982.01-3.097.023-3.15a.478.478 0 0 1 .233-.296c.096-.05.13-.054.5-.054z" />
+              <svg viewBox="0 0 26 26" className="h-12 w-12 fill-current">
+                <g fill="none">
+                  <defs>
+                    <mask id="pepiconsPencilCrownCircleFilled0">
+                      <path fill="#fff" d="M0 0h26v26H0z" />
+                      <g fill="#000">
+                        <path
+                          fill-rule="evenodd"
+                          d="m17.896 16.818l1.515-5.766l-2.214 1.41a2 2 0 0 1-2.74-.578L13 9.695l-1.458 2.19a2 2 0 0 1-2.74.577l-2.213-1.41l1.515 5.766zm-10.77-6.61c-.767-.489-1.736.218-1.505 1.098l1.516 5.766a1 1 0 0 0 .967.746h9.792a1 1 0 0 0 .967-.746l1.516-5.766c.23-.88-.738-1.586-1.505-1.098l-2.214 1.41a1 1 0 0 1-1.37-.288l-1.458-2.19a1 1 0 0 0-1.664 0l-1.458 2.19a1 1 0 0 1-1.37.289z"
+                          clip-rule="evenodd"
+                        />
+                        <path d="M13.944 6.945a.945.945 0 1 1-1.89.002a.945.945 0 0 1 1.89-.002M21.5 8.836a.945.945 0 1 1-1.89.001a.945.945 0 0 1 1.89 0M6.389 8.836a.945.945 0 1 1-1.89.001a.945.945 0 0 1 1.89 0" />
+                        <path
+                          fill-rule="evenodd"
+                          d="M8.25 19a.5.5 0 0 1 .5-.5h8.737a.5.5 0 1 1 0 1H8.75a.5.5 0 0 1-.5-.5"
+                          clip-rule="evenodd"
+                        />
+                      </g>
+                    </mask>
+                  </defs>
+                  <circle
+                    cx="13"
+                    cy="13"
+                    r="13"
+                    fill="currentColor"
+                    mask="url(#pepiconsPencilCrownCircleFilled0)"
+                  />
+                </g>
               </svg>
               <div className="space-y-2">
-                <h3 className="font-bold">Next.js 14</h3>
+                <h3 className="font-bold">Exclusive Access</h3>
                 <p className="text-fgsubtle text-sm">
-                  App dir, Routing, Layouts, Loading UI and API routes.
+                  Members-only Challenges and Events.
                 </p>
               </div>
             </div>
           </div>
           <div className="bg-canvas relative overflow-hidden rounded-lg border p-2">
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <svg viewBox="0 0 24 24" className="h-12 w-12 fill-current">
-                <path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38a2.167 2.167 0 0 0-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44a23.476 23.476 0 0 0-3.107-.534A23.892 23.892 0 0 0 12.769 4.7c1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442a22.73 22.73 0 0 0-3.113.538 15.02 15.02 0 0 1-.254-1.42c-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87a25.64 25.64 0 0 1-4.412.005 26.64 26.64 0 0 1-1.183-1.86c-.372-.64-.71-1.29-1.018-1.946a25.17 25.17 0 0 1 1.013-1.954c.38-.66.773-1.286 1.18-1.868A25.245 25.245 0 0 1 12 8.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933a25.952 25.952 0 0 0-1.345-2.32zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493a23.966 23.966 0 0 0-1.1-2.98c.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98a23.142 23.142 0 0 0-1.086 2.964c-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39a25.819 25.819 0 0 0 1.341-2.338zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143a22.005 22.005 0 0 1-2.006-.386c.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295a1.185 1.185 0 0 1-.553-.132c-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z" />
+              <svg className="h-12 w-12 fill-current" viewBox="0 0 26 26">
+                <g fill="none">
+                  <defs>
+                    <mask id="pepiconsPencilGiftCircleFilled0">
+                      <path fill="#fff" d="M0 0h26v26H0z" />
+                      <g fill="#000">
+                        <path
+                          fill-rule="evenodd"
+                          d="M6 8h14a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1m14 12V9H6v11z"
+                          clip-rule="evenodd"
+                        />
+                        <path d="M12.5 8.5h1v12h-1z" />
+                        <path d="M5 13.5h16v1H5z" />
+                        <path
+                          fill-rule="evenodd"
+                          d="M11.943 4.554c1.125.978 1.787 3.001 1.035 3.866c-.75.864-2.374.27-3.659-.847c-1.094-.951-1.469-2.399-.712-3.269c.756-.87 2.242-.701 3.336.25M9.975 6.82c.897.779 2.033 1.194 2.249.945c.3-.344-.174-1.792-.937-2.455c-.725-.63-1.595-.73-1.926-.349c-.33.38-.11 1.229.614 1.859"
+                          clip-rule="evenodd"
+                        />
+                        <path
+                          fill-rule="evenodd"
+                          d="M14.298 4.554c-1.124.978-1.787 3.001-1.035 3.866c.75.864 2.374.27 3.66-.847c1.094-.951 1.469-2.399.712-3.269c-.756-.87-2.242-.701-3.337.25m1.969 2.265c-.897.779-2.033 1.194-2.249.945c-.3-.344.174-1.792.936-2.455c.725-.63 1.596-.73 1.926-.349c.33.38.111 1.229-.613 1.859"
+                          clip-rule="evenodd"
+                        />
+                      </g>
+                    </mask>
+                  </defs>
+                  <circle
+                    cx="13"
+                    cy="13"
+                    r="13"
+                    fill="currentColor"
+                    mask="url(#pepiconsPencilGiftCircleFilled0)"
+                  />
+                </g>
               </svg>
               <div className="space-y-2">
-                <h3 className="font-bold">React 18</h3>
+                <h3 className="font-bold">Discounts</h3>
                 <p className="text-sm">
-                  Server and Client Components. Use hook.
+                  Deals on gear and services from our partners.
                 </p>
               </div>
             </div>
           </div>
           <div className="bg-canvas relative overflow-hidden rounded-lg border p-2">
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <svg viewBox="0 0 24 24" className="h-12 w-12 fill-current">
-                <path d="M0 12C0 5.373 5.373 0 12 0c4.873 0 9.067 2.904 10.947 7.077l-15.87 15.87a11.981 11.981 0 0 1-1.935-1.099L14.99 12H12l-8.485 8.485A11.962 11.962 0 0 1 0 12Zm12.004 12L24 12.004C23.998 18.628 18.628 23.998 12.004 24Z" />
+              <svg className="h-12 w-12 fill-current" viewBox="0 0 26 26">
+                <g fill="none">
+                  <defs>
+                    <mask id="pepiconsPencilTShirtCircleFilled0">
+                      <path fill="#fff" d="M0 0h26v26H0z" />
+                      <g fill="#000">
+                        <path
+                          fill-rule="evenodd"
+                          d="m5.668 13.009l1.166-.583V19.5a2.5 2.5 0 0 0 2.5 2.5h7.335a2.5 2.5 0 0 0 2.5-2.5v-7.075l1.166.581a.5.5 0 0 0 .71-.338l.945-4.236a.5.5 0 0 0-.135-.463l-2.248-2.24A2.5 2.5 0 0 0 17.842 5h-2.007a.5.5 0 0 0-.493.415c-.287 1.658-1.04 2.409-2.342 2.409c-1.3 0-2.054-.751-2.34-2.409A.5.5 0 0 0 10.167 5H8.161a2.5 2.5 0 0 0-1.766.73L4.15 7.97a.5.5 0 0 0-.135.462l.943 4.238a.5.5 0 0 0 .711.338M8.161 6h1.598c.436 1.84 1.538 2.824 3.241 2.824S15.806 7.84 16.243 6h1.6a1.5 1.5 0 0 1 1.058.437l2.053 2.046l-.745 3.343l-1.317-.656a.5.5 0 0 0-.723.448V19.5a1.5 1.5 0 0 1-1.5 1.5H9.334a1.5 1.5 0 0 1-1.5-1.5v-7.882a.5.5 0 0 0-.724-.448l-1.316.658l-.744-3.345l2.051-2.045A1.5 1.5 0 0 1 8.161 6"
+                          clip-rule="evenodd"
+                        />
+                        <path d="M15 13.5a.5.5 0 0 1 0-1h2a.5.5 0 0 1 0 1z" />
+                      </g>
+                    </mask>
+                  </defs>
+                  <circle
+                    cx="13"
+                    cy="13"
+                    r="13"
+                    fill="currentColor"
+                    mask="url(#pepiconsPencilTShirtCircleFilled0)"
+                  />
+                </g>
               </svg>
               <div className="space-y-2">
-                <h3 className="font-bold">Database</h3>
-                <p className="text-fgsubtle text-sm">Using Convex.</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-canvas relative overflow-hidden rounded-lg border p-2">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <svg viewBox="0 0 24 24" className="h-12 w-12 fill-current">
-                <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z" />
-              </svg>
-              <div className="space-y-2">
-                <h3 className="font-bold">Components</h3>
+                <h3 className="font-bold">BCC Kit</h3>
                 <p className="text-fgsubtle text-sm">
-                  UI components built using Radix UI and styled with Tailwind
-                  CSS.
+                  Proudly show case your BCC Jerseys.
                 </p>
               </div>
             </div>
           </div>
           <div className="bg-canvas relative overflow-hidden rounded-lg border p-2">
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1"
-                className="h-12 w-12 fill-current"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <svg className="h-12 w-12 fill-current" viewBox="0 0 48 48">
+                <g fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M42 17a6 6 0 0 1-5.57 5.985l-3.051 3.05c.855 1.447 1.24 3.367 1.429 5.502c.192 2.169.192 4.705.192 7.429V40h-2v-1c0-2.764 0-5.215-.184-7.286c-.161-1.814-.455-3.227-.943-4.253c-1.197-.16-2.29-.762-3.226-1.504c-1.104-.874-2.086-2.015-2.894-3.115a29.404 29.404 0 0 1-2.105-3.342c-1.344.93-3.155 1.5-5.148 1.5c-4.142 0-7.5-2.462-7.5-5.5c0-2.793 2.838-5.1 6.515-5.453C18.797 7.692 22.335 6 26.5 6c4.708 0 8.616 2.163 9.369 5.001L36 11a6 6 0 0 1 6 6m-11.973.573A14.46 14.46 0 0 1 26.5 18c-.434 0-.862-.018-1.28-.054l-.076.108c.108.208.25.477.424.787a27.419 27.419 0 0 0 1.908 2.967v-.146c1.105 0 2.265-.597 3.227-1.308c.074-.054.146-.108.215-.163a5.964 5.964 0 0 1-.891-2.618m2.226 4.113a5.994 5.994 0 0 0 1.694.953l-2.62 2.62c-.465-.188-.946-.48-1.439-.87a10.58 10.58 0 0 1-1.003-.914c1.183-.306 2.23-.939 3.006-1.511c.126-.093.247-.186.362-.278"
+                    clip-rule="evenodd"
+                  />
+                  <path d="M15.504 28.002a2.5 2.5 0 1 0-.004-5a2.5 2.5 0 0 0 .004 5m-7 4a2.5 2.5 0 1 0-.004-5a2.5 2.5 0 0 0 .004 5M28.002 29.5a2.5 2.5 0 1 1-5 .004a2.5 2.5 0 0 1 5-.004M15 29a2 2 0 0 1 2 2v2h2a2 2 0 1 1 0 4h-4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2m-5 6a2 2 0 1 0-4 0v5a2 2 0 0 0 2 2h4a2 2 0 1 0 0-4h-2zm16-2a2 2 0 0 0-2 2v3h-2a2 2 0 1 0 0 4h4a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2" />
+                </g>
               </svg>
               <div className="space-y-2">
-                <h3 className="font-bold">Authentication</h3>
+                <h3 className="font-bold">Community</h3>
                 <p className="text-fgsubtle text-sm">
-                  Authentication using NextAuth.js and middlewares.
+                  A supportive network of fellow cyclists.
                 </p>
               </div>
             </div>
           </div>
           <div className="bg-canvas relative overflow-hidden rounded-lg border p-2">
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <svg viewBox="0 0 24 24" className="h-12 w-12 fill-current">
-                <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z" />
+              <svg className="size-12 fill-current" viewBox="0 0 26 26">
+                <g fill="none">
+                  <defs>
+                    <mask id="pepiconsPencilHandshakeCircleFilled0">
+                      <path fill="#fff" d="M0 0h26v26H0z" />
+                      <g fill="#000">
+                        <path
+                          fill-rule="evenodd"
+                          d="M6.646 5.49a1 1 0 0 0-1.322.502l-2.163 4.803a1 1 0 0 0 .5 1.322l1.49.671a1 1 0 0 0 1.323-.5l2.163-4.804a1 1 0 0 0-.5-1.322zm-1.773 5.927a.681.681 0 1 0 .56-1.242a.681.681 0 0 0-.56 1.242m17.142.831a1 1 0 0 0 .58-1.29L20.73 6.034a1 1 0 0 0-1.29-.581l-1.527.579a1 1 0 0 0-.58 1.29l1.866 4.925a1 1 0 0 0 1.289.581zm-2.937-5.445a.681.681 0 1 0 .483 1.274a.681.681 0 0 0-.483-1.274"
+                          clip-rule="evenodd"
+                        />
+                        <path
+                          fill-rule="evenodd"
+                          d="M17.885 7.107h.008a.5.5 0 1 0-.087-.997h-.008l-.026.003l-.096.01a41.841 41.841 0 0 0-1.516.172c-.895.117-2.004.297-2.73.539c-.352.117-.724.344-1.08.604c-.361.264-.735.585-1.093.918a28.131 28.131 0 0 0-1.819 1.885c-.419.474-.516 1.23-.024 1.766c.32.346.82.784 1.468.98c.677.203 1.457.124 2.254-.468l.999-.645a.35.35 0 0 1 .018-.011c.143.087.342.237.58.436c.26.218.542.475.805.722a34.353 34.353 0 0 1 .88.86l.055.057l.014.014l.005.005l.059.06l.075.039c.403.2.846.128 1.19.012c.358-.12.714-.324 1.017-.525a8.893 8.893 0 0 0 1.075-.849l.018-.016l.005-.005l.001-.001s-.088-.31-.432-.672l-.271.34L19 13l-2.508.957L17 13.5l-.268-.717a34.008 34.008 0 0 0-.508-.49c-.27-.254-.568-.525-.85-.76c-.273-.23-.557-.448-.794-.578c-.394-.216-.78-.056-.988.079l-1.028.664l-.014.01c-.555.416-1.011.432-1.38.321c-.4-.12-.755-.412-1.02-.7c-.083-.09-.107-.263.037-.426a27.145 27.145 0 0 1 1.752-1.815c.34-.317.682-.61 1.001-.843c.326-.238.6-.393.807-.462c.624-.208 1.645-.379 2.544-.498a40.906 40.906 0 0 1 1.478-.167l.093-.009z"
+                          clip-rule="evenodd"
+                        />
+                        <path d="M17.127 13.177a34.493 34.493 0 0 0-.395-.394L17 13.5l-.508.457L19 13l.229-.66l.271-.34l-.255-.054l-.003.002l-.014.013l-.054.05a8.18 8.18 0 0 1-.895.699c-.27.18-.543.33-.783.41c-.186.063-.302.068-.369.057" />
+                        <path
+                          fill-rule="evenodd"
+                          d="m8.047 8.068l-.197-.46l-.197-.46l.04-.016l.113-.048a92.636 92.636 0 0 1 1.67-.69a37.63 37.63 0 0 1 1.372-.523c.203-.072.392-.134.55-.179c.136-.039.31-.084.452-.084c.13 0 .267.03.38.06c.122.033.256.077.392.127c.274.1.583.23.869.356a29.066 29.066 0 0 1 .992.466l.066.032l.018.009l.006.003a.5.5 0 0 1-.447.895l-.005-.003l-.016-.008l-.062-.03a28.804 28.804 0 0 0-.959-.45a13.126 13.126 0 0 0-.803-.33a3.822 3.822 0 0 0-.309-.1a.928.928 0 0 0-.119-.026l-.009.002c-.02.003-.073.014-.172.042a8.91 8.91 0 0 0-.492.161c-.388.137-.865.322-1.332.509a86.968 86.968 0 0 0-1.651.681l-.111.047zm-.657-.263a.5.5 0 0 1 .263-.656l.197.46l.197.459a.5.5 0 0 1-.657-.263m-1.903 3.96a.5.5 0 0 1 .707-.02l-.344.363l-.343.364a.5.5 0 0 1-.02-.707m4.57 3.387l2.763 1.036a1.5 1.5 0 0 0 1.587-.344l2.09-2.09a.5.5 0 0 1 .707.708l-2.09 2.09a2.5 2.5 0 0 1-2.645.572l-2.82-1.057l-.023-.011a3.007 3.007 0 0 1-.434-.293c-.162-.124-.352-.28-.557-.454a56.53 56.53 0 0 1-1.358-1.199a127.981 127.981 0 0 1-1.623-1.5l-.109-.102l-.038-.036l.343-.364l.344-.363l.037.035l.107.101a131.968 131.968 0 0 0 1.61 1.488c.46.417.935.84 1.333 1.178c.2.169.377.313.52.424c.132.101.215.157.256.18M6.67 17.288a.5.5 0 0 1 .703-.063l.959.8a1.5 1.5 0 0 0 .753.334l1.236.174a.5.5 0 1 1-.138.99l-1.237-.173a2.5 2.5 0 0 1-1.255-.557l-.959-.8a.5.5 0 0 1-.063-.705"
+                          clip-rule="evenodd"
+                        />
+                      </g>
+                    </mask>
+                  </defs>
+                  <circle
+                    cx="13"
+                    cy="13"
+                    r="13"
+                    fill="currentColor"
+                    mask="url(#pepiconsPencilHandshakeCircleFilled0)"
+                  />
+                </g>
               </svg>
               <div className="space-y-2">
-                <h3 className="font-bold">Subscriptions</h3>
+                <h3 className="font-bold">Access to Expertice</h3>
                 <p className="text-fgsubtle text-sm">
-                  Free and paid subscriptions using Stripe.
+                  Benefit from the collective knowledge of a group of experts.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-canvas relative overflow-hidden rounded-lg border p-2">
+            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
+              <svg className="size-12 fill-current" viewBox="0 0 512 512">
+                <path
+                  fill="currentColor"
+                  d="M253.813 14.47c-132.537 0-240.188 107.65-240.188 240.186c0 132.537 107.65 240.156 240.188 240.156C386.349 494.813 494 387.192 494 254.656S386.35 14.47 253.812 14.47zm0 18.686c122.436 0 221.5 99.064 221.5 221.5c0 17.96-2.133 35.412-6.157 52.125l-44.906-8.686l-20.53-71.594l-1.376-4.844l-4.844-1.5l-58.063-17.937l-66.906-128.626l-4.75-9.156l-8.655 5.624l-91.094 59.25l-2.936 1.907l-.97 3.374L116.19 301.97l-70.22 29.436c-8.82-23.91-13.656-49.753-13.656-76.75c0-122.436 99.064-221.5 221.5-221.5zm.812 62.125l-52.53 104.595l16.218 134.438l90.125-61.938v62.97l-23.563 6.25L305.72 470.03c-16.646 3.988-34.03 6.095-51.908 6.095c-88.813 0-165.33-52.117-200.656-127.47l74.406-31.217l4.126-1.72l1.25-4.312l48.187-168.28z"
+                />
+              </svg>
+              <div className="space-y-2">
+                <h3 className="font-bold">Exploration and Adventure</h3>
+                <p className="text-fgsubtle text-sm">
+                  Discover new routes and sceanic landscapes.
                 </p>
               </div>
             </div>
@@ -169,54 +300,33 @@ export default async function IndexPage() {
         </div>
         <div className="mx-auto text-center md:max-w-[58rem]">
           <p className="text-fgsubtle leading-normal sm:text-lg sm:leading-7">
-            Dev Project also includes a blog and a full-featured documentation
-            site built using Contentlayer and MDX.
+            These benefits not only make cycling more enjoyable but also
+            contribute to a stronger sense of community and shared passion for
+            the sport.
           </p>
         </div>
       </section>
-      <section id="open-source" className="container py-8 md:py-12 lg:py-24">
+      <section id="inspiration" className="container py-8 md:py-12 lg:py-24">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            Proudly Open Source
+            Always Cheering You On!
           </h2>
           <p className="text-fgsubtle max-w-[85%] leading-normal sm:text-lg sm:leading-7">
-            Dev Project is open source and powered by open source software.{" "}
-            <br /> The code is available on{" "}
+            We&apos;re here to motivate, inspire, and reward! You make our day
+            with your constant effort. Your achievements makes our heart sing,
+            and we&apos;re sure that you&apos;re just getting started! Get ready
+            to hit your personal goals with us, and we&apos;ll always be there
+            to cheer you on.. <br />
             <Link
-              href={siteConfig.links.github}
+              href={siteConfig.links.facebook}
               target="_blank"
               rel="noreferrer"
               className="underline underline-offset-4"
             >
-              GitHub
+              -- Team Bcc
             </Link>
             .{" "}
           </p>
-          {stars && (
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-              className="flex"
-            >
-              <div className="border-bordersubtle bg-ui flex h-10 w-10 items-center justify-center space-x-2 rounded-md border">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="text-fg h-5 w-5"
-                >
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
-                </svg>
-              </div>
-              <div className="flex items-center">
-                <div className="border-bordersubtle h-4 w-4 border-y-8 border-l-0 border-r-8 border-solid border-y-transparent"></div>
-                <div className="border-bordersubtle bg-ui flex h-10 items-center rounded-md border px-4 font-medium">
-                  {stars} stars on GitHub
-                </div>
-              </div>
-            </Link>
-          )}
         </div>
       </section>
     </>

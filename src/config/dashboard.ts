@@ -3,18 +3,29 @@ import { MenuConfig } from "types";
 export const dashboardConfig: MenuConfig = {
   mainNav: [
     {
-      title: "Documentation",
-      href: "/docs",
+      title: "Home",
+      href: "/",
     },
     {
-      title: "Support",
-      href: "/support",
-      disabled: true,
+      title: "Posts",
+      href: "/posts",
+    },
+    {
+      title: "Events",
+      href: "/events",
+    },
+    {
+      title: "Challenges",
+      href: "/challenges",
+    },
+    {
+      title: "Marketplace",
+      href: "/marketplace",
     },
   ],
   sidebarNav: [
     {
-      title: "Posts",
+      title: "Lobby",
       href: "/dashboard",
       icon: "post",
       items: [],

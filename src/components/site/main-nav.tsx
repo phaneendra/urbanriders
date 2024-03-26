@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import NextLink from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 
@@ -20,7 +21,13 @@ export function MainNav({ items, children }: MainNavProps) {
   return (
     <div className="mr-4 hidden gap-6 md:flex md:gap-10">
       <NextLink href="/" className="mr-6 flex items-center gap-2">
-        <Icons.logo className="h-10 w-10" />
+        <Image
+          src="/images/logo/logo-colored.png"
+          alt="Start your cycling journey"
+          className="size-12"
+          width={48}
+          height={48}
+        />
         <span className="hidden font-bold sm:inline-block">
           {siteConfig.name}
         </span>

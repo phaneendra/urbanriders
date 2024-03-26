@@ -31,6 +31,7 @@ import {
 } from "lucide-react";
 
 import { Discord } from "@/components/icons/discord";
+import { DiscordCircle } from "@/components/icons/discord-circle";
 import { Facebook } from "@/components/icons/facebook";
 import { GitHub } from "@/components/icons/github";
 import { Google } from "@/components/icons/google";
@@ -79,6 +80,7 @@ export const Icons = {
   google: Google,
   facebook: Facebook,
   discord: Discord,
+  discordCircle: DiscordCircle,
   strava: Strava,
   check: Check,
   search: Search,

@@ -3,46 +3,46 @@
 An open source Web Application and platform to organize and participate in cycling events, connect to Strava and compete in challenges, with exclusive rewards and gamified achievements.
 
 > **Warning**
-> This app is a work in progress. I'm building this in public. You can follow the progress on my (log file)[LOG.md].
-> See the roadmap below or follow my (log)[LOG.md]
+> This app is a work in progress. I'm building this in public. You can follow the progress on this README.
+> See the roadmap below
 
 ## About this project
 
 This platform is specific for one cycling club and enables to manage various club activities, challenges, events and blogs. Some of the Key features being built or planned to be built
 
-- Basic Website features including a responsive header footer and mobile navigation
-- Marketing home page which display
-  - Latest Posts
-  - Featured Events
-  - Featured Products
-  - Recent Marketplace Ads
-- A ecommerce Marketplace where users and members will be able to see
-  - Featured Products
-  - Recent Ads
-  - Featured Stores
-- A Events listing page enabling users and members find and participate in events
-- A Blogs listing page which shows
-  - Latest Posts
-  - Featured Posts ( Most liked)
-  - Blog categories and posts under it
-  - Various Tags for blogs
-- A Challenges Page ( Show what you get by login) (TBD)
-- A basic dashboard shell with a page header, side navigation and a botom bar for mobile view
-- A dashboard which enabled admins to
-  - create and edit events
-  - create and edit challenges
-  - manage users and members
-  - manage budgets and inventory
-- A dashboard which enable users and members to
-  - view and edit profile
-  - create posts
-  - manage their settings and preferences
-  - manage their orders
-  - view and subscribe to challenges
-  - view club activities and leaderboards
-  - view their fitness levels and progress
-  - view their stats and personal records
-  - view their achivements and badges
+- [ ] Basic Website features including a responsive header footer and mobile navigation
+- [ ] Marketing home page which display
+  - [ ] Latest Posts
+  - [ ] Featured Events
+  - [ ] Featured Products
+  - [ ] Recent Marketplace Ads
+- [ ] A ecommerce Marketplace where users and members will be able to see
+  - [ ] Featured Products
+  - [ ] Recent Ads
+  - [ ] Featured Stores
+- [ ] A Events listing page enabling users and members find and participate in events
+- [ ] A Blogs listing page which shows
+  - [ ] Latest Posts
+  - [ ] Featured Posts ( Most liked)
+  - [ ] Blog categories and posts under it
+  - [ ] Various Tags for blogs
+- [ ] A Challenges Page ( Show what you get by login) (TBD)
+- [ ] A basic dashboard shell with a page header, side navigation and a botom bar for mobile view
+- [ ] A dashboard which enabled admins to
+  - [ ] create and edit events
+  - [ ] create and edit challenges
+  - [ ] manage users and members
+  - [ ] manage budgets and inventory
+- [ ] A dashboard which enable users and members to
+  - [ ] view and edit profile
+  - [ ] create posts
+  - [ ] manage their settings and preferences
+  - [ ] manage their orders
+  - [ ] view and subscribe to challenges
+  - [ ] view club activities and leaderboards
+  - [ ] view their fitness levels and progress
+  - [ ] view their stats and personal records
+  - [ ] view their achivements and badges
 
 ## Note on Performance
 
@@ -124,3 +124,21 @@ Test credit card for India : 4000003560000008
 ## License
 
 Licensed under the [MIT license](https://github.com/phaneendra/urbanriders/blob/main/LICENSE.md).
+
+## Scratch
+
+Join our Story
+
+Ready to roll? Sign up today and be part of our next adventure!
+
+As needed, download the Discord app for your phone/tablet or Windows 10/11 pc.
+You'll need a Discord account. If you don't have one, select Create Discord Account
+You'll also need to join the Bengaluru Cycling Club Discord channel, select https://discord.gg/xxxxx then Accept Invite
+Start the Discord app on your device. You can also run it from a web browser by selecting here
+Use the Text channel, general to ask questions, share riding experiences or to give feedback
+
+Our Rides
+
+The Club is too big and varied for us to all meet together and go for a ride, so, naturally, the Members have formed many groups of their own to ride and socialise. It is daunting for new members to find out what is going on. Why not make it easy for new (and old!) members, and describe the group(s) you are in? Any Club Member can request Admin or Volunteers to create a Group Channel. Tell us where you meet and how you communicate (Facebook, WhatsApp, Messenger, etc.). You can use the website itself or group specific Discord channel to send messages to other Group members, or just point them to your preferred communications channel.
+
+Explore all BCC Groups Note: Groups are only visible to logged-in Club Members.
