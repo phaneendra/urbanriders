@@ -13,9 +13,9 @@ import {
   AlertTitle,
 } from "@/components/ui/feedback/Alert";
 import { BillingForm } from "@/components/billing-form";
-import { DashboardHeader } from "@/components/dashboard/header";
 import { Icons } from "@/components/icons";
-import { DashboardShell } from "@/components/shell";
+import { DashboardHeader } from "@/app/dashboard/_components/header";
+import { DashboardShell } from "@/app/dashboard/_components/shell";
 
 export const metadata = {
   title: "Billing",

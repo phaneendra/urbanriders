@@ -1,4 +1,4 @@
-import { env } from "@/env.mjs";
+import { env } from "@/config/env";
 
 export * from "./cn";
 

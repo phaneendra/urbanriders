@@ -21,7 +21,7 @@ export default async function MarketingLayout({
         <MobileNav navItems={marketingConfig.sidebarNav} />
         <nav>
           <NavLink asChild variant="ghost">
-            <NextLink href="/login">Login</NextLink>
+            <NextLink href="/signin">Login</NextLink>
           </NavLink>
         </nav>
       </SiteHeader>

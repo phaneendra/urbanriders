@@ -14,7 +14,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
     <div className="grid min-h-screen grid-cols-1 overflow-hidden md:grid-cols-3 lg:grid-cols-2">
       <AspectRatio ratio={16 / 9} className="relative inset-0">
         <Image
-          src="/images/auth-layout.webp"
+          src="/images/signin/auth-layout.webp"
           alt="Start your cycling journey"
           fill
           className="inset-0 h-[100vh] w-full object-cover opacity-30"
@@ -46,7 +46,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
           </a>
         </div>
       </AspectRatio>
-      <main className="container absolute top-1/2 col-span-1 flex -translate-y-1/2 items-center md:static md:top-0 md:col-span-2 md:flex md:translate-y-0 lg:col-span-1">
+      <main className="container absolute top-1/2 col-span-1 flex -translate-y-1/2 items-center justify-center md:static md:top-0 md:col-span-2 md:flex md:translate-y-0 lg:col-span-1">
         {children}
       </main>
     </div>

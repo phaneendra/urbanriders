@@ -1,11 +1,16 @@
-import type { Config } from "drizzle-kit";
+import { defineConfig } from "drizzle-kit";
+
+import { env } from "@/config/env";
+
+console.log(env);
 
 /** @type {import('drizzle-kit').Config} */
-export default {
-  out: "./drizzle/migrations",
-  schema: "./src/db/schema.ts",
-  driver: "libsql",
+export default defineConfig({
+  dialect: "sqlite",
+  out: env.DATABASE_MIGRATE_FOLDER ?? "./drizzle/migrations",
+  schema: "./src/lib/db/schema.ts",
+  driver: "turso",
   dbCredentials: {
-    url: process.env.DATABASE_URL ?? "",
+    url: env.DATABASE_URL ?? "http://localhost:8080",
   },
-} satisfies Config;
+});

@@ -1,7 +1,7 @@
-import { DashboardHeader } from "@/components/dashboard/header";
 import { PostCreateButton } from "@/components/post-create-button";
 import { PostItem } from "@/components/post-item";
-import { DashboardShell } from "@/components/shell";
+import { DashboardHeader } from "@/app/dashboard/_components/header";
+import { DashboardShell } from "@/app/dashboard/_components/shell";
 
 export default function DashboardLoading() {
   return (

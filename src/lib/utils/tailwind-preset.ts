@@ -484,6 +484,13 @@ export const uiPreset = {
             letterSpacing: "0em",
           },
         ],
+        md: [
+          "calc(16px * var(--scaling))",
+          {
+            lineHeight: "calc(24px * var(--scaling))",
+            letterSpacing: "0em",
+          },
+        ],
         base: [
           "calc(16px * var(--scaling))",
           {

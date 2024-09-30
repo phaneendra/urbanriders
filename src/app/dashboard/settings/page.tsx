@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 
-import { DashboardHeader } from "@/components/dashboard/header";
-import { DashboardShell } from "@/components/shell";
 import { UserNameForm } from "@/components/user-name-form";
+import { DashboardHeader } from "@/app/dashboard/_components/header";
+import { DashboardShell } from "@/app/dashboard/_components/shell";
 
 export const metadata = {
   title: "Settings",

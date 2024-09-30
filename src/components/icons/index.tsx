@@ -35,7 +35,7 @@ import { DiscordCircle } from "@/components/icons/discord-circle";
 import { Facebook } from "@/components/icons/facebook";
 import { GitHub } from "@/components/icons/github";
 import { Google } from "@/components/icons/google";
-import { Logo } from "@/components/icons/logo";
+import { LogoFull } from "@/components/icons/logofull";
 import { NextAuth } from "@/components/icons/nextauth";
 import { Nextjs } from "@/components/icons/nextjs";
 import { PlanetScale } from "@/components/icons/planetscale";
@@ -47,7 +47,7 @@ import { Tailwind } from "@/components/icons/tailwind";
 export type Icon = LucideProps;
 
 export const Icons = {
-  logo: Logo,
+  logo: LogoFull,
   close: X,
   spinner: Loader2,
   chevronLeft: ChevronLeft,

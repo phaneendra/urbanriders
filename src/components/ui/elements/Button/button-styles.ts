@@ -13,10 +13,10 @@ export const buttonStyles = cva(
   {
     variants: {
       size: {
-        xs: "text-xs [&_svg]:w-5 [&_svg]:h-5",
-        sm: "text-sm [&_svg]:w-6 [&_svg]:h-6",
-        base: "text-base [&_svg]:w-7 [&_svg]:h-7",
-        lg: "text-lg [&_svg]:w-8 [&_svg]:h-8",
+        xs: "text-xs [&_svg]:w-4 [&_svg]:h-4",
+        sm: "text-sm [&_svg]:w-5 [&_svg]:h-5",
+        base: "text-base [&_svg]:w-6 [&_svg]:h-6",
+        lg: "text-lg [&_svg]:w-7 [&_svg]:h-7",
       },
       weight: {
         light: "font-light",
@@ -592,17 +592,17 @@ export const buttonStyles = cva(
       {
         size: "sm",
         variant: ["solid", "soft", "surface", "outline"],
-        className: "h-7 gap-2 px-3",
+        className: "h-8 gap-2 px-3",
       },
       {
         size: "base",
         variant: ["solid", "soft", "surface", "outline"],
-        className: "h-8 gap-3 px-4",
+        className: "h-10 gap-3 px-4",
       },
       {
         size: "lg",
         variant: ["solid", "soft", "surface", "outline"],
-        className: "h-9 gap-3 px-5",
+        className: "h-12 gap-3 px-5",
       },
 
       {

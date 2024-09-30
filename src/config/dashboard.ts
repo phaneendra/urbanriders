@@ -31,6 +31,12 @@ export const dashboardConfig: MenuConfig = {
       items: [],
     },
     {
+      title: "Members",
+      href: "/dashboard/users",
+      icon: "billing",
+      items: [],
+    },
+    {
       title: "Billing",
       href: "/dashboard/billing",
       icon: "billing",

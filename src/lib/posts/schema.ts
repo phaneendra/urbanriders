@@ -8,7 +8,7 @@ import {
 } from "drizzle-orm/sqlite-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
-import { userTable } from "@/lib/user";
+import { userTable } from "@/lib/profile";
 
 // -----------------------------------------------------------------------
 // Posts - Post Table to store the post data.

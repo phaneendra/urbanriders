@@ -1,6 +1,6 @@
 # Urban Riders
 
-An open source Web Application and platform to organize and participate in cycling events, connect to Strava and compete in challenges, with exclusive rewards and gamified achievements.
+An open source Web Application and platform to organize and participate in fitness and sporting events, connect to Strava and compete in challenges, with exclusive rewards and gamified achievements.
 
 > **Warning**
 > This app is a work in progress. I'm building this in public. You can follow the progress on this README.

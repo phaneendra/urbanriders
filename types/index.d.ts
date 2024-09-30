@@ -1,30 +1,48 @@
+import localFont from "next/font/local";
 import type { Icon } from "lucide-react";
 
 import { Icons } from "@/components/icons";
 
-export type Post = {
-  id: string;
-  title: string;
-  content: string;
-  published: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  authorId: string;
-};
+import { GitHub } from "../../devkit/apps/dash/src/components/icons/Github";
 
-export type User = {
+// Authentication and Authorization Types
+export type UserId = number;
+// export type User = User;
+export type { User, Role, Status } from "@/lib/auth/dataaccess/schema";
+export type {
+  Profile,
+  ProfileWithUsers,
+} from "@/lib/profile/dataaccess/schema";
+export interface GitHubUser {
   id: string;
-  name: string | null;
-  email: string | null;
-  emailVerified: Date | null;
-  image: string | null;
-  createdAt: Date;
-  updatedAt: Date;
-  stripeCustomerId: string | null;
-  stripeSubscriptionId: string | null;
-  stripePriceId: string | null;
-  stripeCurrentPeriodEnd: Date | null;
-};
+  login: string;
+  avatar_url: string;
+  email: string;
+}
+
+interface GitHubEmail {
+  email: string;
+  primary: boolean;
+  verified: boolean;
+  visibility: string | null;
+}
+
+// export type User = {
+//   id: string;
+//   name: string | null;
+//   email: string | null;
+//   emailVerified: Date | null;
+//   image: string | null;
+//   createdAt: Date;
+//   updatedAt: Date;
+//   stripeCustomerId: string | null;
+//   stripeSubscriptionId: string | null;
+//   stripePriceId: string | null;
+//   stripeCurrentPeriodEnd: Date | null;
+// };
+// -----------------------------------------------------------------------------
+
+// Navigation Types
 export interface NavItem {
   title: string;
   href: string;
@@ -62,13 +80,16 @@ export type SiteConfig = {
   }[];
   creator: string;
   creatorTwitterhandle: string;
+  loginCallbackUrl: string;
 };
 
 export type MenuConfig = {
   mainNav: MainNavItem[];
   sidebarNav: SidebarNavItem[];
 };
+// -----------------------------------------------------------------------------
 
+// Stripe Types
 export type SubscriptionPlan = {
   name: string;
   description: string;
@@ -80,3 +101,15 @@ export type UserSubscriptionPlan = SubscriptionPlan &
     stripeCurrentPeriodEnd: number;
     isPro: boolean;
   };
+
+// Application Types
+export type Post = {
+  id: string;
+  title: string;
+  content: string;
+  published: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+  authorId: string;
+};
+// -----------------------------------------------------------------------------

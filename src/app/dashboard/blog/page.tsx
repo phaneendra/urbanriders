@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
 
-import { DashboardHeader } from "@/components/dashboard/header";
 import { EmptyPlaceholder } from "@/components/empty-placeholder";
 import { PostCreateButton } from "@/components/post-create-button";
 import { PostItem } from "@/components/post-item";
-import { DashboardShell } from "@/components/shell";
+import { DashboardHeader } from "@/app/dashboard/_components/header";
+import { DashboardShell } from "@/app/dashboard/_components/shell";
 
 export const metadata = {
   title: "Dashboard",

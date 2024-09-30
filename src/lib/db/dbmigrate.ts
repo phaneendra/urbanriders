@@ -3,17 +3,19 @@ import { createClient } from "@libsql/client";
 import { drizzle } from "drizzle-orm/libsql";
 import { migrate } from "drizzle-orm/libsql/migrator";
 
+import { env } from "@/config/env.js";
+
 async function main() {
   console.log("Migration started");
 
   const client = createClient({
-    url: process.env.DATABASE_URL ?? "",
-    authToken: process.env.DATABASE_AUTH_TOKEN ?? "",
+    url: env.DATABASE_URL ?? "",
+    authToken: env.DATABASE_AUTH_TOKEN ?? "",
   });
 
   const db = drizzle(client);
 
-  await migrate(db, { migrationsFolder: "./drizzle/migrations" });
+  await migrate(db, { migrationsFolder: env.DATABASE_MIGRATE_FOLDER });
 
   console.log("Migration completed");
 
